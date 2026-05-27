@@ -6,27 +6,29 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useMatchRoute,
 } from "@tanstack/react-router";
-
 import appCss from "../styles.css?url";
+import { ThemeProvider } from "@/lib/theme";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
+import { MolecularCanvas } from "@/components/MolecularCanvas";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+    <div className="flex min-h-screen items-center justify-center bg-hero px-4">
+      <div className="glass rounded-3xl p-10 text-center max-w-md">
+        <p className="font-display text-7xl text-gradient">404</p>
+        <h2 className="mt-3 font-display text-2xl">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          This route doesn't exist in the lab notebook.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="mt-6 inline-flex items-center justify-center rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90"
+        >
+          Return home
+        </Link>
       </div>
     </div>
   );
@@ -35,32 +37,19 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
+    <div className="flex min-h-screen items-center justify-center bg-hero px-4">
+      <div className="glass rounded-3xl p-10 text-center max-w-md">
+        <h1 className="font-display text-2xl">An experiment failed to load</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Try again or head back home.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            onClick={() => { router.invalidate(); reset(); }}
+            className="rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium"
           >
             Try again
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+          <a href="/" className="rounded-full border border-border px-5 py-2 text-sm font-medium">Go home</a>
         </div>
       </div>
     </div>
@@ -72,19 +61,46 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-    ],
-    links: [
+      { title: "Aftab Mollah — RNA-Protein Biophysics & Molecular Biology" },
       {
-        rel: "stylesheet",
-        href: appCss,
+        name: "description",
+        content:
+          "PhD candidate in Chemistry & Biochemistry decoding the hidden language between RNA and proteins. Biophysics, m6A reader proteins, ITC, fluorescence spectroscopy, confocal microscopy.",
+      },
+      { name: "author", content: "Aftab Mollah" },
+      { property: "og:title", content: "Aftab Mollah — RNA-Protein Biophysics" },
+      { property: "og:description", content: "Decoding the hidden language between RNA and proteins." },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Aftab Mollah" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "stylesheet", href: appCss }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Aftab Mollah",
+          jobTitle: "PhD Candidate in Chemistry & Biochemistry",
+          affiliation: { "@type": "Organization", name: "Kent State University" },
+          alumniOf: [
+            { "@type": "Organization", name: "Indian Institute of Technology Patna" },
+          ],
+          knowsAbout: [
+            "RNA-Protein Interactions",
+            "Biophysical Chemistry",
+            "Molecular Biology",
+            "m6A Reader Proteins",
+            "Isothermal Titration Calorimetry",
+            "Fluorescence Spectroscopy",
+            "Confocal Microscopy",
+          ],
+          sameAs: [
+            "https://www.linkedin.com/in/aftabmollah/",
+            "https://scholar.google.com/citations?user=V5A0-tkAAAAJ&hl=en",
+          ],
+        }),
       },
     ],
   }),
@@ -108,13 +124,37 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+function VariantBackground() {
+  const matchRoute = useMatchRoute();
+  const variant =
+    matchRoute({ to: "/", fuzzy: false }) ? "hero" :
+    matchRoute({ to: "/updates" }) ? "updates" :
+    matchRoute({ to: "/expertise" }) ? "expertise" :
+    matchRoute({ to: "/story" }) ? "story" :
+    matchRoute({ to: "/research" }) ? "research" :
+    matchRoute({ to: "/experience" }) ? "experience" :
+    matchRoute({ to: "/publications" }) ? "publications" :
+    matchRoute({ to: "/contact" }) ? "contact" :
+    "hero";
+  return (
+    <div className="fixed inset-0 -z-10 opacity-70 pointer-events-none">
+      <MolecularCanvas variant={variant as "hero"} className="h-full w-full" />
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider>
+        <div className="relative min-h-screen bg-hero">
+          <VariantBackground />
+          <Nav />
+          <Outlet />
+          <Footer />
+        </div>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
