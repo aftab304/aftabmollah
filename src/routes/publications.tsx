@@ -130,3 +130,7 @@ export function PublicationsSection() {
     </section>
   );
 }
+
+function PublicationsPage() {
+  return <PublicationsSection />;
+}

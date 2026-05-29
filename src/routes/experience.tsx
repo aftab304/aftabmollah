@@ -107,3 +107,7 @@ export function ExperienceSection() {
     </section>
   );
 }
+
+function ExperiencePage() {
+  return <ExperienceSection />;
+}

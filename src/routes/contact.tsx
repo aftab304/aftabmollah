@@ -139,3 +139,7 @@ export function ContactSection() {
     </section>
   );
 }
+
+function ContactPage() {
+  return <ContactSection />;
+}
