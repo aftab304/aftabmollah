@@ -13,6 +13,7 @@ import { ThemeProvider } from "@/lib/theme";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { MolecularCanvas } from "@/components/MolecularCanvas";
+import { VariantProvider, useVariant, type SceneVariant } from "@/lib/variant";
 
 function NotFoundComponent() {
   return (
@@ -131,7 +132,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function VariantBackground() {
   const matchRoute = useMatchRoute();
-  const variant =
+  const { variant: ctxVariant } = useVariant();
+  const routeVariant: SceneVariant =
     matchRoute({ to: "/", fuzzy: false }) ? "hero" :
     matchRoute({ to: "/updates" }) ? "updates" :
     matchRoute({ to: "/expertise" }) ? "expertise" :
@@ -141,8 +143,10 @@ function VariantBackground() {
     matchRoute({ to: "/publications" }) ? "publications" :
     matchRoute({ to: "/contact" }) ? "contact" :
     "hero";
+  // On home, sections register their variant via context; elsewhere use the route.
+  const variant = ctxVariant ?? routeVariant;
   return (
-    <div className="fixed inset-0 -z-10 opacity-70 pointer-events-none">
+    <div className="fixed inset-0 -z-10 opacity-70 pointer-events-none transition-opacity duration-700">
       <MolecularCanvas variant={variant as "hero"} className="h-full w-full" />
     </div>
   );
@@ -153,12 +157,14 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <div className="relative min-h-screen bg-hero">
-          <VariantBackground />
-          <Nav />
-          <Outlet />
-          <Footer />
-        </div>
+        <VariantProvider>
+          <div className="relative min-h-screen bg-hero">
+            <VariantBackground />
+            <Nav />
+            <Outlet />
+            <Footer />
+          </div>
+        </VariantProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
