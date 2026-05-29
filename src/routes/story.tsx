@@ -1,6 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
+import { useVariantOnView } from "@/hooks/useVariantOnView";
+import chapter1 from "@/assets/story/chapter-1.jpg";
+import chapter2 from "@/assets/story/chapter-2.jpg";
+import chapter3 from "@/assets/story/chapter-3.jpg";
+import chapter4 from "@/assets/story/chapter-4.jpg";
+import chapter5 from "@/assets/story/chapter-5.jpg";
+import chapter6 from "@/assets/story/chapter-6.jpg";
 
 export const Route = createFileRoute("/story")({
   head: () => ({
@@ -25,6 +32,7 @@ const chapters = [
     body:
       "I grew up in West Bengal, India, the kind of place where small questions about the natural world quickly turn into big curiosities. Chemistry was the language that first made the invisible feel real to me.",
     quote: "Why does anything become anything else?",
+    image: chapter1,
   },
   {
     tag: "Foundation",
@@ -33,6 +41,7 @@ const chapters = [
     body:
       "I pursued my Master's in Chemistry at the Indian Institute of Technology Patna, where rigorous training in physical and analytical chemistry shaped how I think about molecules and measurements. The Best Master's Project award here was less about a prize and more about realizing research could be a calling.",
     quote: "Precision is a form of respect for nature.",
+    image: chapter2,
   },
   {
     tag: "Leap",
@@ -41,6 +50,7 @@ const chapters = [
     body:
       "I left for the United States alone, carrying two suitcases and a fully funded PhD position at Kent State University. The first months were equal parts intimidation and exhilaration — a new country, a new lab, and a new way of working.",
     quote: "Curiosity is portable. Ambition is not optional.",
+    image: chapter3,
   },
   {
     tag: "Research",
@@ -49,6 +59,7 @@ const chapters = [
     body:
       "My doctoral work centers on RNA–protein interactions and m6A reader proteins — the molecules that decide which messages in our cells get read, and how. Biophysics gave me a way to ask thermodynamic questions about biology and actually answer them.",
     quote: "Every binding event is a tiny sentence in the language of life.",
+    image: chapter4,
   },
   {
     tag: "Mentorship",
@@ -57,6 +68,7 @@ const chapters = [
     body:
       "Mentoring undergraduates and participating in STEM outreach reshaped what success looks like for me. Some of my proudest moments have been watching mentees win their own awards at the Ohio Academy of Science and the ACS Honors Week.",
     quote: "Science multiplies when it's shared.",
+    image: chapter5,
   },
   {
     tag: "Vision",
@@ -65,12 +77,14 @@ const chapters = [
     body:
       "I want to keep working at the interface of biophysics and biomedicine — where mechanistic insight into RNA–protein recognition becomes leverage for new diagnostics, modulators, and therapies. Academic or industry, the question is the same: how do we read the molecular language well enough to rewrite it for human good?",
     quote: "Driven by curiosity, guided by molecular interactions.",
+    image: chapter6,
   },
 ];
 
-function StoryPage() {
+export function StorySection() {
+  const ref = useVariantOnView<HTMLElement>("story");
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-8 pb-20">
+    <section id="story" ref={ref} className="mx-auto max-w-6xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="My Story"
         title={<>A journey through <span className="text-gradient italic">molecules</span>.</>}
@@ -94,22 +108,33 @@ function StoryPage() {
                 className={`relative grid md:grid-cols-2 gap-8 items-center ${left ? "" : "md:[&>*:first-child]:order-2"}`}
               >
                 <div className={`${left ? "md:text-right md:pr-12" : "md:pl-12"}`}>
-                  <div className={`inline-flex items-center gap-2 glass rounded-full px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground`}>
+                  <div className="inline-flex items-center gap-2 glass rounded-full px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
                     <span className="h-1.5 w-1.5 rounded-full bg-[var(--azure)]" /> {c.tag} · {c.year}
                   </div>
                   <h3 className="mt-4 font-display text-3xl md:text-4xl leading-tight text-balance">{c.title}</h3>
                   <p className="mt-4 text-muted-foreground leading-relaxed">{c.body}</p>
+                  <p className="mt-5 font-display text-lg md:text-xl italic text-foreground/80 leading-snug">
+                    "{c.quote}"
+                  </p>
                 </div>
                 <div className={`relative ${left ? "md:pl-12" : "md:pr-12"}`}>
-                  <div className="absolute hidden md:block top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10">
-                    <div className="h-4 w-4 rounded-full bg-[var(--azure)] shadow-glow ring-4 ring-background/80" />
-                  </div>
-                  <div className="glass rounded-3xl p-8 relative overflow-hidden">
-                    <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-[var(--azure)]/40 to-[var(--cyan)]/30 blur-2xl" />
-                    <p className="font-display text-3xl md:text-4xl italic leading-snug text-balance">
-                      "{c.quote}"
-                    </p>
-                    <p className="mt-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">Chapter {i + 1}</p>
+                  <div className="glass rounded-3xl p-3 relative overflow-hidden">
+                    <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-[var(--azure)]/40 to-[var(--cyan)]/30 blur-2xl pointer-events-none" />
+                    <div className="relative aspect-square rounded-2xl overflow-hidden">
+                      <img
+                        src={c.image}
+                        alt=""
+                        loading="lazy"
+                        width={768}
+                        height={768}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-foreground/90">
+                        <span className="bg-background/70 backdrop-blur rounded-full px-2.5 py-1">Chapter {i + 1}</span>
+                        <span className="bg-background/70 backdrop-blur rounded-full px-2.5 py-1">{c.year}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -119,4 +144,8 @@ function StoryPage() {
       </div>
     </section>
   );
+}
+
+function StoryPage() {
+  return <StorySection />;
 }

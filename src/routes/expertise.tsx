@@ -4,7 +4,9 @@ import { SectionHeader } from "@/components/SectionHeader";
 import {
   ITCAnim, FluorescenceAnim, ConfocalAnim, BindingAnim,
   PurificationAnim, CloningAnim, GelAnim,
+  CellCultureAnim, NanotechAnim,
 } from "@/components/TechniqueAnims";
+import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 export const Route = createFileRoute("/expertise")({
   head: () => ({
@@ -25,6 +27,8 @@ const hero = [
   { title: "Fluorescence Spectroscopy", short: "Fluorescence", desc: "Steady-state and anisotropy measurements to probe RNA–protein interactions and conformational dynamics.", anim: FluorescenceAnim },
   { title: "Confocal Fluorescence Microscopy", short: "Confocal", desc: "Z-stack imaging of fluorophore-labeled biomolecules in fixed and live cells.", anim: ConfocalAnim },
   { title: "RNA–Protein Binding Assays", short: "RNA–Protein", desc: "EMSA, fluorescence binding, and competition assays to quantify specificity and selectivity.", anim: BindingAnim },
+  { title: "Human Cell Culture", short: "Cell Culture", desc: "Mammalian cell lines for expression, transfection, and live-cell imaging of RNA-protein complexes.", anim: CellCultureAnim },
+  { title: "Nanotechnology", short: "Nanotech", desc: "Functionalized nanoparticle synthesis and characterization for biological and diagnostic applications.", anim: NanotechAnim },
   { title: "Protein Purification", short: "Purification", desc: "Affinity, ion-exchange, and size-exclusion chromatography for biophysics-grade samples.", anim: PurificationAnim },
   { title: "Molecular Cloning", short: "Cloning", desc: "Mutagenesis, Gibson assembly, and expression vector design for RNA-binding protein constructs.", anim: CloningAnim },
   { title: "EMSA & Western Blot", short: "EMSA", desc: "Native gel-shift assays and immunoblotting to verify binding and protein expression.", anim: GelAnim },
@@ -34,11 +38,9 @@ const more = [
   { title: "NMR Spectroscopy", desc: "Solution-state NMR for atomic-resolution insight into structure and dynamics." },
   { title: "TEM & SEM", desc: "Ultrastructural imaging of nanoparticles and biomolecular assemblies." },
   { title: "Dynamic Light Scattering", desc: "Size distribution and oligomeric state of macromolecules in solution." },
-  { title: "Human Cell Culture", desc: "Mammalian cell lines for expression and live-cell imaging experiments." },
   { title: "Gel Electrophoresis", desc: "SDS-PAGE and native gels for biochemical characterization." },
   { title: "UV-Visible Spectroscopy", desc: "Absorbance-based quantification and binding studies." },
   { title: "IR Spectroscopy", desc: "Vibrational spectroscopy for secondary structure analysis." },
-  { title: "Nanotechnology", desc: "Functionalized nanoparticle synthesis for biological applications." },
 ];
 
 function TechniqueCard({ title, desc, AnimComp, index }: { title: string; desc: string; AnimComp: React.ComponentType; index: number }) {
@@ -60,9 +62,10 @@ function TechniqueCard({ title, desc, AnimComp, index }: { title: string; desc: 
   );
 }
 
-function ExpertisePage() {
+export function ExpertiseSection() {
+  const ref = useVariantOnView<HTMLElement>("expertise");
   return (
-    <section className="mx-auto max-w-7xl px-6 pt-8 pb-20">
+    <section id="expertise" ref={ref} className="mx-auto max-w-7xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="Experimental Dashboard"
         title={<>Techniques & <span className="text-gradient italic">expertise</span>.</>}
@@ -80,7 +83,7 @@ function ExpertisePage() {
         <p className="mt-2 text-sm text-muted-foreground max-w-2xl">
           Complementary techniques that round out a multidisciplinary research practice.
         </p>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {more.map((m, i) => (
             <motion.div
               key={m.title}
@@ -99,4 +102,8 @@ function ExpertisePage() {
       </div>
     </section>
   );
+}
+
+function ExpertisePage() {
+  return <ExpertiseSection />;
 }
