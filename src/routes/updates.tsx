@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { updates } from "@/content/site";
 import { SectionHeader } from "@/components/SectionHeader";
+import { useVariantOnView } from "@/hooks/useVariantOnView";
+import awardImg from "@/assets/updates/award.jpg";
+import conferenceImg from "@/assets/updates/conference.jpg";
+import publicationImg from "@/assets/updates/publication.jpg";
+import mentorshipImg from "@/assets/updates/mentorship.jpg";
 
 export const Route = createFileRoute("/updates")({
   head: () => ({
@@ -24,10 +29,19 @@ const sizeMap: Record<string, string> = {
   lg: "md:col-span-6 md:row-span-1",
 };
 
-function UpdatesPage() {
+function imageForTag(tag: string): string {
+  const t = tag.toLowerCase();
+  if (t.includes("mentor") || t.includes("service")) return mentorshipImg;
+  if (t.includes("conference")) return conferenceImg;
+  if (t.includes("publication")) return publicationImg;
+  return awardImg;
+}
+
+export function UpdatesSection() {
   const [open, setOpen] = useState<string | null>(null);
+  const ref = useVariantOnView<HTMLElement>("updates");
   return (
-    <section className="mx-auto max-w-7xl px-6 pt-8 pb-20">
+    <section id="updates" ref={ref} className="mx-auto max-w-7xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="Notice Board"
         title={<>Recent <span className="text-gradient italic">updates</span>.</>}
@@ -38,6 +52,7 @@ function UpdatesPage() {
         {updates.map((u, i) => {
           const size = sizeMap[u.size ?? "md"];
           const isOpen = open === u.id;
+          const img = imageForTag(u.tag);
           return (
             <motion.button
               key={u.id}
@@ -48,25 +63,34 @@ function UpdatesPage() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.04, duration: 0.5 }}
               whileHover={{ y: -3 }}
-              className={`${size} text-left glass rounded-2xl p-5 relative overflow-hidden hover:shadow-glow transition-all min-h-[170px]`}
+              className={`${size} text-left glass rounded-2xl overflow-hidden relative hover:shadow-glow transition-all min-h-[300px] flex flex-col`}
             >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--azure)]/50 to-transparent" />
-              <div className="flex items-center justify-between text-xs">
-                <span className="rounded-full bg-[var(--accent)]/60 px-2.5 py-1 text-[10px] uppercase tracking-wider text-foreground/80">
-                  {u.tag}
-                </span>
-                <span className="font-display text-[var(--azure)]">{u.year}</span>
+              <div className="relative h-32 w-full overflow-hidden">
+                <img
+                  src={img}
+                  alt=""
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover opacity-90 group-hover:scale-105 transition-transform"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-xs">
+                  <span className="rounded-full bg-background/80 backdrop-blur px-2.5 py-1 text-[10px] uppercase tracking-wider text-foreground/80">
+                    {u.tag}
+                  </span>
+                  <span className="font-display text-[var(--azure)] bg-background/80 backdrop-blur rounded-full px-2.5 py-0.5">{u.year}</span>
+                </div>
               </div>
-              <p className="mt-4 font-display text-xl md:text-2xl leading-snug">{u.title}</p>
-              <motion.p
-                initial={false}
-                animate={{ height: isOpen ? "auto" : "auto", opacity: 1 }}
-                className={`mt-3 text-sm text-muted-foreground leading-relaxed ${isOpen ? "" : "line-clamp-3"}`}
-              >
-                {u.body}
-              </motion.p>
-              <div className="absolute bottom-3 right-4 text-[10px] uppercase tracking-wider text-muted-foreground">
-                {isOpen ? "Click to collapse" : "Click to expand"}
+              <div className="p-5 flex-1 flex flex-col">
+                <p className="font-display text-lg md:text-xl leading-snug">{u.title}</p>
+                <motion.p
+                  initial={false}
+                  className={`mt-3 text-sm text-muted-foreground leading-relaxed flex-1 ${isOpen ? "" : "line-clamp-3"}`}
+                >
+                  {u.body}
+                </motion.p>
+                <div className="mt-3 text-[10px] uppercase tracking-wider text-muted-foreground">
+                  {isOpen ? "Click to collapse" : "Click to expand"}
+                </div>
               </div>
             </motion.button>
           );
@@ -74,4 +98,8 @@ function UpdatesPage() {
       </div>
     </section>
   );
+}
+
+function UpdatesPage() {
+  return <UpdatesSection />;
 }

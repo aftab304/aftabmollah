@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Search, ExternalLink, ChevronDown } from "lucide-react";
 import { publications, type Publication } from "@/content/site";
+import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 export const Route = createFileRoute("/publications")({
   head: () => ({
@@ -70,7 +71,8 @@ function PubCard({ p }: { p: Publication }) {
   );
 }
 
-function PublicationsPage() {
+export function PublicationsSection() {
+  const ref = useVariantOnView<HTMLElement>("publications");
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState<typeof filters[number]["id"]>("all");
 
@@ -86,7 +88,7 @@ function PublicationsPage() {
   }, [q, filter]);
 
   return (
-    <section className="mx-auto max-w-5xl px-6 pt-8 pb-20">
+    <section id="publications" ref={ref} className="mx-auto max-w-5xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="Archive"
         title={<>Publications & <span className="text-gradient italic">presentations</span>.</>}
@@ -127,4 +129,8 @@ function PublicationsPage() {
       </div>
     </section>
   );
+}
+
+function PublicationsPage() {
+  return <PublicationsSection />;
 }

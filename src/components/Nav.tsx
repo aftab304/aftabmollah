@@ -1,24 +1,26 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/lib/theme";
 import { motion, AnimatePresence } from "framer-motion";
 
 const items = [
-  { to: "/", label: "Home" },
-  { to: "/updates", label: "Updates" },
-  { to: "/expertise", label: "Expertise" },
-  { to: "/research", label: "Research" },
-  { to: "/story", label: "Story" },
-  { to: "/experience", label: "Experience" },
-  { to: "/publications", label: "Publications" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", hash: "hero", label: "Home" },
+  { to: "/updates", hash: "updates", label: "Updates" },
+  { to: "/expertise", hash: "expertise", label: "Expertise" },
+  { to: "/research", hash: "research", label: "Research" },
+  { to: "/story", hash: "story", label: "Story" },
+  { to: "/experience", hash: "experience", label: "Experience" },
+  { to: "/publications", hash: "publications", label: "Publications" },
+  { to: "/contact", hash: "contact", label: "Contact" },
 ] as const;
 
 export function Nav() {
   const { theme, toggle } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const onHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -39,28 +41,30 @@ export function Nav() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {items.map((it) => (
-              <Link
-                key={it.to}
-                to={it.to}
-                className="relative px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                activeProps={{ className: "text-foreground" }}
-                activeOptions={{ exact: it.to === "/" }}
-              >
-                {({ isActive }) => (
-                  <>
+            {items.map((it) => {
+              if (onHome) {
+                return (
+                  <a
+                    key={it.to}
+                    href={`#${it.hash}`}
+                    className="relative px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
                     {it.label}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-active"
-                        className="absolute inset-0 -z-10 rounded-full bg-[var(--accent)]"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      />
-                    )}
-                  </>
-                )}
-              </Link>
-            ))}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={it.to}
+                  to={it.to}
+                  className="relative px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  activeProps={{ className: "text-foreground" }}
+                  activeOptions={{ exact: it.to === "/" }}
+                >
+                  {it.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -89,18 +93,29 @@ export function Nav() {
               exit={{ opacity: 0, y: -8 }}
               className="md:hidden mt-2 glass rounded-2xl p-3 grid gap-1"
             >
-              {items.map((it) => (
-                <Link
-                  key={it.to}
-                  to={it.to}
-                  onClick={() => setOpen(false)}
-                  className="px-3 py-2 rounded-lg text-sm hover:bg-[var(--accent)]"
-                  activeProps={{ className: "bg-[var(--accent)]" }}
-                  activeOptions={{ exact: it.to === "/" }}
-                >
-                  {it.label}
-                </Link>
-              ))}
+              {items.map((it) =>
+                onHome ? (
+                  <a
+                    key={it.to}
+                    href={`#${it.hash}`}
+                    onClick={() => setOpen(false)}
+                    className="px-3 py-2 rounded-lg text-sm hover:bg-[var(--accent)]"
+                  >
+                    {it.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={it.to}
+                    to={it.to}
+                    onClick={() => setOpen(false)}
+                    className="px-3 py-2 rounded-lg text-sm hover:bg-[var(--accent)]"
+                    activeProps={{ className: "bg-[var(--accent)]" }}
+                    activeOptions={{ exact: it.to === "/" }}
+                  >
+                    {it.label}
+                  </Link>
+                )
+              )}
             </motion.div>
           )}
         </AnimatePresence>

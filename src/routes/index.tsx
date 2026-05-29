@@ -2,6 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Linkedin, Mail, GraduationCap, BookOpen, Sparkles } from "lucide-react";
 import { portraitUrl, linkedinUrl, scholarUrl, orcidUrl, email } from "@/content/site";
+import { useVariantOnView } from "@/hooks/useVariantOnView";
+import { UpdatesSection } from "./updates";
+import { ExpertiseSection } from "./expertise";
+import { StorySection } from "./story";
+import { ResearchSection } from "./research";
+import { ExperienceSection } from "./experience";
+import { PublicationsSection } from "./publications";
+import { ContactSection } from "./contact";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,10 +31,11 @@ export const Route = createFileRoute("/")({
 
 const tags = ["PhD Candidate", "Biochemist", "Molecular Biologist", "RNA Researcher"];
 
-function HomePage() {
+function HeroSection() {
+  const ref = useVariantOnView<HTMLElement>("hero");
   return (
-    <section className="relative">
-      <div className="mx-auto max-w-7xl px-6 pt-12 md:pt-20 pb-32 grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-20 items-center">
+    <section id="hero" ref={ref} className="relative scroll-mt-24">
+      <div className="mx-auto max-w-7xl px-6 pt-12 md:pt-20 pb-24 grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-20 items-center">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -83,18 +92,18 @@ function HomePage() {
               <Download className="h-4 w-4" />
               Download CV
             </a>
-            <Link
-              to="/publications"
+            <a
+              href="#publications"
               className="inline-flex items-center gap-2 rounded-full glass px-5 py-3 text-sm font-medium hover:shadow-glow"
             >
               Publications <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              to="/contact"
+            </a>
+            <a
+              href="#contact"
               className="inline-flex items-center gap-2 rounded-full glass px-5 py-3 text-sm font-medium hover:shadow-glow"
             >
               Get in touch
-            </Link>
+            </a>
           </motion.div>
 
           <motion.div
@@ -131,7 +140,6 @@ function HomePage() {
         >
           <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-[var(--azure)]/40 via-[var(--cyan)]/30 to-transparent blur-2xl" />
           <div className="relative glass rounded-[2rem] p-3 shadow-glass">
-            <div className="absolute -inset-px rounded-[2rem] bg-gradient-to-br from-[var(--azure)]/60 via-transparent to-[var(--cyan)]/60 [mask:linear-gradient(#000,#000)_padding-box,linear-gradient(#000,#000)] p-px pointer-events-none" />
             <div className="relative overflow-hidden rounded-[1.6rem] aspect-[4/5]">
               <img
                 src={portraitUrl}
@@ -155,7 +163,7 @@ function HomePage() {
       </div>
 
       {/* Highlights strip */}
-      <div className="mx-auto max-w-7xl px-6 pb-20">
+      <div className="mx-auto max-w-7xl px-6 pb-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { n: "6+", l: "Publications & presentations" },
@@ -178,32 +186,46 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-4">
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-4 pb-8">
         {[
-          { to: "/research", title: "Research", desc: "m6A readers, RNA-protein recognition, biophysical characterization." },
-          { to: "/expertise", title: "Expertise", desc: "ITC, fluorescence, confocal microscopy, cloning and beyond." },
-          { to: "/story", title: "Story", desc: "From West Bengal to IIT Patna to Kent State — a curiosity-led path." },
+          { to: "#research", title: "Research", desc: "m6A readers, RNA-protein recognition, biophysical characterization." },
+          { to: "#expertise", title: "Expertise", desc: "ITC, fluorescence, confocal microscopy, cloning and beyond." },
+          { to: "#story", title: "Story", desc: "From West Bengal to IIT Patna to Kent State — a curiosity-led path." },
         ].map((c, i) => (
-          <motion.div
+          <motion.a
             key={c.to}
+            href={c.to}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
+            className="group block glass rounded-2xl p-6 h-full hover:shadow-glow transition-all hover:-translate-y-1"
           >
-            <Link
-              to={c.to}
-              className="group block glass rounded-2xl p-6 h-full hover:shadow-glow transition-all hover:-translate-y-1"
-            >
-              <p className="font-display text-2xl">{c.title}</p>
-              <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm text-[var(--azure)]">
-                Explore <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          </motion.div>
+            <p className="font-display text-2xl">{c.title}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm text-[var(--azure)]">
+              Explore <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </motion.a>
         ))}
       </div>
     </section>
+  );
+}
+
+function HomePage() {
+  // Suppress unused Link import; keep available for future cross-route links
+  void Link;
+  return (
+    <>
+      <HeroSection />
+      <UpdatesSection />
+      <ExpertiseSection />
+      <StorySection />
+      <ResearchSection />
+      <ExperienceSection />
+      <PublicationsSection />
+      <ContactSection />
+    </>
   );
 }

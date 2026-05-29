@@ -335,3 +335,135 @@ export function GelAnim() {
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
+
+export function CellCultureAnim() {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    const ctx = c.getContext("2d")!;
+    let raf = 0; let t = 0;
+    const dpr = window.devicePixelRatio || 1;
+    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    resize();
+    window.addEventListener("resize", resize);
+    type Cell = { x: number; y: number; r: number; phase: number; divide: number };
+    let cells: Cell[] = Array.from({ length: 9 }).map(() => ({
+      x: Math.random(), y: Math.random(), r: 0.06 + Math.random() * 0.05,
+      phase: Math.random() * Math.PI * 2, divide: Math.random() * 6,
+    }));
+    const loop = () => {
+      t += 0.012;
+      const w = c.width, h = c.height;
+      ctx.clearRect(0, 0, w, h);
+      // dish rim
+      ctx.strokeStyle = "rgba(120,150,200,0.25)";
+      ctx.lineWidth = 1 * dpr;
+      ctx.beginPath();
+      ctx.arc(w / 2, h / 2, Math.min(w, h) * 0.46, 0, Math.PI * 2);
+      ctx.stroke();
+      cells.forEach((cell) => {
+        cell.divide -= 0.012;
+        const pulse = 0.85 + 0.15 * Math.sin(t * 1.5 + cell.phase);
+        const x = cell.x * w, y = cell.y * h, r = cell.r * Math.min(w, h) * pulse;
+        // membrane
+        const grad = ctx.createRadialGradient(x, y, r * 0.2, x, y, r);
+        grad.addColorStop(0, "rgba(180,220,255,0.9)");
+        grad.addColorStop(0.6, "rgba(59,111,216,0.45)");
+        grad.addColorStop(1, "rgba(26,167,194,0)");
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+        // nucleus
+        ctx.fillStyle = "rgba(122,92,255,0.85)";
+        ctx.beginPath(); ctx.arc(x + Math.sin(t + cell.phase) * r * 0.15, y + Math.cos(t + cell.phase) * r * 0.15, r * 0.3, 0, Math.PI * 2); ctx.fill();
+      });
+      // mitosis: cells with divide<=0 split
+      const next: Cell[] = [];
+      cells.forEach((cell) => {
+        if (cell.divide <= 0 && cells.length + next.length < 18) {
+          const angle = Math.random() * Math.PI * 2;
+          const d = cell.r * 1.2;
+          next.push({ x: cell.x + Math.cos(angle) * d * 0.5, y: cell.y + Math.sin(angle) * d * 0.5, r: cell.r * 0.85, phase: Math.random() * 6, divide: 6 + Math.random() * 6 });
+          cell.x -= Math.cos(angle) * d * 0.3;
+          cell.y -= Math.sin(angle) * d * 0.3;
+          cell.r *= 0.85;
+          cell.divide = 8 + Math.random() * 6;
+        }
+      });
+      cells = [...cells, ...next].filter((c) => c.r > 0.02);
+      if (cells.length > 18) cells = cells.slice(-18);
+      raf = requestAnimationFrame(loop);
+    };
+    loop();
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+  }, []);
+  return <canvas ref={ref} className="w-full h-full" />;
+}
+
+export function NanotechAnim() {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    const ctx = c.getContext("2d")!;
+    let raf = 0; let t = 0;
+    const dpr = window.devicePixelRatio || 1;
+    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    resize();
+    window.addEventListener("resize", resize);
+    const loop = () => {
+      t += 0.014;
+      const w = c.width, h = c.height;
+      ctx.clearRect(0, 0, w, h);
+      // hex lattice
+      const s = 22 * dpr;
+      const cols = Math.ceil(w / (s * 1.5)) + 1;
+      const rows = Math.ceil(h / (s * Math.sqrt(3))) + 1;
+      ctx.strokeStyle = "rgba(59,111,216,0.18)";
+      ctx.lineWidth = 1 * dpr;
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const x = i * s * 1.5;
+          const y = j * s * Math.sqrt(3) + (i % 2) * (s * Math.sqrt(3) / 2);
+          ctx.beginPath();
+          for (let k = 0; k < 6; k++) {
+            const a = (k / 6) * Math.PI * 2;
+            const px = x + Math.cos(a) * s;
+            const py = y + Math.sin(a) * s;
+            k === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.stroke();
+        }
+      }
+      // traveling electrons along lattice rows
+      for (let j = 0; j < rows; j += 2) {
+        const y = j * s * Math.sqrt(3);
+        const x = ((t * 0.4 + j * 0.13) % 1) * w;
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, 16 * dpr);
+        grad.addColorStop(0, "rgba(180,220,255,0.95)");
+        grad.addColorStop(1, "rgba(26,167,194,0)");
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(x, y, 16 * dpr, 0, Math.PI * 2); ctx.fill();
+      }
+      // nanoparticles
+      const np = 5;
+      for (let i = 0; i < np; i++) {
+        const a = t * 0.5 + (i / np) * Math.PI * 2;
+        const cx = w / 2 + Math.cos(a) * w * 0.28;
+        const cy = h / 2 + Math.sin(a * 1.3) * h * 0.25;
+        const r = 12 * dpr;
+        const grad = ctx.createRadialGradient(cx - r * 0.3, cy - r * 0.3, r * 0.1, cx, cy, r);
+        grad.addColorStop(0, "rgba(255,255,255,0.95)");
+        grad.addColorStop(0.4, "rgba(122,92,255,0.85)");
+        grad.addColorStop(1, "rgba(59,111,216,0.1)");
+        ctx.fillStyle = grad;
+        ctx.shadowColor = "rgba(122,92,255,0.6)"; ctx.shadowBlur = 16 * dpr;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    loop();
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+  }, []);
+  return <canvas ref={ref} className="w-full h-full" />;
+}

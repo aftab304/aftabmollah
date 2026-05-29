@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Microscope, GraduationCap, Users, Sparkles, Mic, Award } from "lucide-react";
+import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
@@ -62,9 +63,10 @@ const items = [
   },
 ];
 
-function ExperiencePage() {
+export function ExperienceSection() {
+  const ref = useVariantOnView<HTMLElement>("experience");
   return (
-    <section className="mx-auto max-w-5xl px-6 pt-8 pb-20">
+    <section id="experience" ref={ref} className="mx-auto max-w-5xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="Experience"
         title={<>Research, teaching & <span className="text-gradient italic">leadership</span>.</>}
@@ -104,4 +106,8 @@ function ExperiencePage() {
       </div>
     </section>
   );
+}
+
+function ExperiencePage() {
+  return <ExperienceSection />;
 }
