@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Mail, Linkedin, GraduationCap, BookOpen, Send, Check } from "lucide-react";
 import { email, linkedinUrl, scholarUrl, orcidUrl, researchgateUrl } from "@/content/site";
+import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,7 +20,8 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-function ContactPage() {
+export function ContactSection() {
+  const ref = useVariantOnView<HTMLElement>("contact");
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", from: "", message: "" });
   const onSubmit = (e: React.FormEvent) => {
@@ -31,7 +33,7 @@ function ContactPage() {
   };
 
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-8 pb-20">
+    <section id="contact" ref={ref} className="mx-auto max-w-6xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="Contact"
         title={<>Let's <span className="text-gradient italic">collaborate</span>.</>}
