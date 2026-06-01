@@ -13,5 +13,16 @@ export default defineConfig({
     // SSR entry wrapper lives at src/server.ts
     server: { entry: "server" },
   },
-  ...(isVercel ? { nitro: { preset: "vercel" } } : {}),
+  ...(isVercel
+    ? {
+        nitro: {
+          preset: "vercel",
+          output: {
+            dir: ".vercel/output",
+            serverDir: ".vercel/output/functions/__nitro.func",
+            publicDir: ".vercel/output/static",
+          },
+        },
+      }
+    : {}),
 });
