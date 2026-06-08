@@ -10,13 +10,6 @@ const sizeMap: Record<string, string> = {
   lg: "md:col-span-6 md:row-span-1",
 };
 
-function imageForTag(tag: string): string {
-  const t = tag.toLowerCase();
-  if (t.includes("mentor") || t.includes("service")) return mentorshipImg;
-  if (t.includes("conference")) return conferenceImg;
-  if (t.includes("publication")) return publicationImg;
-  return awardImg;
-}
 
 export function UpdatesSection() {
   const [open, setOpen] = useState<string | null>(null);

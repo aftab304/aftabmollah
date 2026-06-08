@@ -145,14 +145,10 @@ export function ResearchSection() {
       </div>
 
       <div className="mt-14 text-center">
-        <Link to="/publications" className="inline-flex items-center gap-2 glass rounded-full px-5 py-3 text-sm font-medium hover:shadow-glow">
+        <a href="#publications" className="inline-flex items-center gap-2 glass rounded-full px-5 py-3 text-sm font-medium hover:shadow-glow">
           See all publications & presentations <ArrowRight className="h-4 w-4" />
-        </Link>
+        </a>
       </div>
     </section>
   );
-}
-
-function ResearchPage() {
-  return <ResearchSection />;
 }

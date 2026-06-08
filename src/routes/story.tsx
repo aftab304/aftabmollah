@@ -119,14 +119,21 @@ export function StorySection() {
                   <div className="glass rounded-3xl p-3 relative overflow-hidden">
                     <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-[var(--azure)]/40 to-[var(--cyan)]/30 blur-2xl pointer-events-none" />
                     <div className="relative aspect-square rounded-2xl overflow-hidden">
-                      <img
-                        src={c.image}
-                        alt=""
-                        loading="lazy"
-                        width={768}
-                        height={768}
-                        className="h-full w-full object-cover"
-                      />
+                      {c.image ? (
+                        <img
+                          src={c.image}
+                          alt={c.imageAlt ?? ""}
+                          loading="lazy"
+                          width={768}
+                          height={768}
+                          referrerPolicy="no-referrer"
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="h-full w-full grid place-items-center bg-muted/40 text-center px-6">
+                          <p className="text-sm text-muted-foreground leading-relaxed">{c.placeholder}</p>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-foreground/90">
                         <span className="bg-background/70 backdrop-blur rounded-full px-2.5 py-1">Chapter {i + 1}</span>
