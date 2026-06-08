@@ -26,7 +26,8 @@ export function UpdatesSection() {
         {updates.map((u, i) => {
           const size = sizeMap[u.size ?? "md"];
           const isOpen = open === u.id;
-          const img = imageForTag(u.tag);
+          const img = updateImages[u.id];
+          const placeholder = updatePlaceholders[u.id];
           return (
             <motion.button
               key={u.id}
@@ -40,13 +41,20 @@ export function UpdatesSection() {
               className={`${size} text-left glass rounded-2xl overflow-hidden relative hover:shadow-glow transition-all min-h-[300px] flex flex-col`}
             >
               <div className="relative h-32 w-full overflow-hidden">
-                <img
-                  src={img}
-                  alt=""
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover opacity-90 group-hover:scale-105 transition-transform"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                {img ? (
+                  <img
+                    src={img}
+                    alt=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    className="absolute inset-0 h-full w-full object-cover opacity-90 group-hover:scale-105 transition-transform"
+                  />
+                ) : (
+                  <div className="absolute inset-0 grid place-items-center bg-muted/40 px-4 text-center text-xs text-muted-foreground">
+                    {placeholder ?? "📷 Photo coming soon"}
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent pointer-events-none" />
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-xs">
                   <span className="rounded-full bg-background/80 backdrop-blur px-2.5 py-1 text-[10px] uppercase tracking-wider text-foreground/80">
                     {u.tag}
