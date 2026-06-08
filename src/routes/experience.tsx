@@ -1,22 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Microscope, GraduationCap, Users, Sparkles, Mic, Award } from "lucide-react";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-
-export const Route = createFileRoute("/experience")({
-  head: () => ({
-    meta: [
-      { title: "Experience, Teaching & Leadership — Aftab Mollah" },
-      { name: "description", content: "Research, teaching, mentorship, conferences, and STEM outreach across IIT Patna and Kent State University." },
-      { property: "og:title", content: "Experience — Aftab Mollah" },
-      { property: "og:description", content: "Research, teaching, and leadership." },
-      { property: "og:url", content: "/experience" },
-    ],
-    links: [{ rel: "canonical", href: "/experience" }],
-  }),
-  component: ExperiencePage,
-});
 
 const items = [
   {
@@ -28,19 +13,19 @@ const items = [
   {
     icon: GraduationCap, kind: "Teaching",
     title: "Graduate Teaching Assistant — Department of Chemistry & Biochemistry",
-    when: "Kent State University",
+    when: "2021 — Present · Kent State University",
     body: "Led general and organic chemistry laboratories; designed problem sets and one-on-one tutoring sessions.",
   },
   {
     icon: Users, kind: "Mentorship",
     title: "Undergraduate Research Mentor",
-    when: "Kent State University",
+    when: "2022 — Present · Kent State University",
     body: "Mentored undergraduates whose work has won the Ohio Academy of Science and ACS Honors Week poster awards.",
   },
   {
     icon: Sparkles, kind: "Outreach",
     title: "STEM Outreach & Sci-Pals",
-    when: "Northeastern Ohio",
+    when: "2023 — Present · Northeastern Ohio",
     body: "Communicating molecular biology to K-12 students and the public — making the invisible feel real.",
   },
   {
@@ -52,13 +37,13 @@ const items = [
   {
     icon: Award, kind: "Conferences",
     title: "Biophysical Society Annual Meetings · Rustbelt RNA · MSNO",
-    when: "Philadelphia, Los Angeles, Ohio",
+    when: "2024 — Present · Philadelphia, Los Angeles, Ohio",
     body: "Poster and talk presentations across national and regional venues from 2024 onward.",
   },
   {
     icon: Microscope, kind: "Research",
     title: "Master's Researcher — IIT Patna",
-    when: "Indian Institute of Technology Patna",
+    when: "2018 — 2020 · Indian Institute of Technology Patna",
     body: "Awarded Best Master's Project by the Department of Chemistry for thesis work in physical chemistry.",
   },
 ];

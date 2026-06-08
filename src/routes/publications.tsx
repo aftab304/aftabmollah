@@ -1,24 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Search, ExternalLink, ChevronDown } from "lucide-react";
 import { publications, type Publication } from "@/content/site";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-
-export const Route = createFileRoute("/publications")({
-  head: () => ({
-    meta: [
-      { title: "Publications & Presentations — Aftab Mollah" },
-      { name: "description", content: "Peer-reviewed publications, poster presentations, and conference talks on RNA-protein interactions and m6A biology." },
-      { property: "og:title", content: "Publications — Aftab Mollah" },
-      { property: "og:description", content: "Papers, posters, and talks." },
-      { property: "og:url", content: "/publications" },
-    ],
-    links: [{ rel: "canonical", href: "/publications" }],
-  }),
-  component: PublicationsPage,
-});
 
 const filters = [
   { id: "all", label: "All" },
