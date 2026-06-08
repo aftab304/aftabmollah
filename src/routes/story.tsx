@@ -1,28 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-import chapter1 from "@/assets/story/chapter-1.jpg";
-import chapter2 from "@/assets/story/chapter-2.jpg";
-import chapter3 from "@/assets/story/chapter-3.jpg";
-import chapter4 from "@/assets/story/chapter-4.jpg";
-import chapter5 from "@/assets/story/chapter-5.jpg";
-import chapter6 from "@/assets/story/chapter-6.jpg";
 
-export const Route = createFileRoute("/story")({
-  head: () => ({
-    meta: [
-      { title: "My Story — Aftab Mollah" },
-      { name: "description", content: "From West Bengal to IIT Patna to Kent State — a curiosity-led journey through chemistry, biophysics, and RNA biology." },
-      { property: "og:title", content: "My Story — Aftab Mollah" },
-      { property: "og:description", content: "A cinematic journey from West Bengal to Kent State." },
-      { property: "og:url", content: "/story" },
-      { property: "og:type", content: "article" },
-    ],
-    links: [{ rel: "canonical", href: "/story" }],
-  }),
-  component: StoryPage,
-});
+const CH1 = "https://drive.google.com/uc?export=view&id=1QFDauhhOoF4jfiYapewbb93wHVawU9BZ";
+const CH2 = "https://drive.google.com/uc?export=view&id=1NQwir11zKPcvibfF38SDXEO-uAPXCSDE";
+const CH3 = "https://www.kent.edu/sites/default/files/styles/hero_image/public/2022-03/KSU_Campus_AerialMay2019_DSC5618-Edit.jpg";
+const CH3_ALT = "Kent State University campus";
+const CH6 = "https://drive.google.com/uc?export=view&id=1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
 
 const chapters = [
   {

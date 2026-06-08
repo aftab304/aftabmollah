@@ -1,4 +1,3 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -8,21 +7,6 @@ import abstractM6a from "@/assets/research/abstract-m6a.jpg";
 import abstractRecognition from "@/assets/research/abstract-recognition.jpg";
 import abstractBiophysics from "@/assets/research/abstract-biophysics.jpg";
 import abstractImaging from "@/assets/research/abstract-imaging.jpg";
-
-export const Route = createFileRoute("/research")({
-  head: () => ({
-    meta: [
-      { title: "Research — Aftab Mollah" },
-      { name: "description", content: "Research on RNA-protein interactions, m6A reader proteins, biomolecular recognition, and biophysical characterization." },
-      { property: "og:title", content: "Research — Aftab Mollah" },
-      { property: "og:description", content: "RNA-protein interactions and m6A reader proteins." },
-      { property: "og:url", content: "/research" },
-      { property: "og:type", content: "article" },
-    ],
-    links: [{ rel: "canonical", href: "/research" }],
-  }),
-  component: ResearchPage,
-});
 
 const themes = [
   {

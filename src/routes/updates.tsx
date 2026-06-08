@@ -1,27 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { updates } from "@/content/site";
+import { updates, updateImages, updatePlaceholders } from "@/content/site";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-import awardImg from "@/assets/updates/award.jpg";
-import conferenceImg from "@/assets/updates/conference.jpg";
-import publicationImg from "@/assets/updates/publication.jpg";
-import mentorshipImg from "@/assets/updates/mentorship.jpg";
-
-export const Route = createFileRoute("/updates")({
-  head: () => ({
-    meta: [
-      { title: "Recent Updates — Aftab Mollah" },
-      { name: "description", content: "Recent awards, publications, talks, and mentorship highlights." },
-      { property: "og:title", content: "Recent Updates — Aftab Mollah" },
-      { property: "og:description", content: "A scientific notice board of recent highlights." },
-      { property: "og:url", content: "/updates" },
-    ],
-    links: [{ rel: "canonical", href: "/updates" }],
-  }),
-  component: UpdatesPage,
-});
 
 const sizeMap: Record<string, string> = {
   sm: "md:col-span-3 md:row-span-1",
