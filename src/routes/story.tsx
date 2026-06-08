@@ -8,7 +8,18 @@ const CH3 = "https://www.kent.edu/sites/default/files/styles/hero_image/public/2
 const CH3_ALT = "Kent State University campus";
 const CH6 = "https://drive.google.com/uc?export=view&id=1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
 
-const chapters = [
+type Chapter = {
+  tag: string;
+  year: string;
+  title: string;
+  body: string;
+  quote: string;
+  image: string | null;
+  imageAlt?: string;
+  placeholder?: string;
+};
+
+const chapters: Chapter[] = [
   {
     tag: "Origin",
     year: "West Bengal",
@@ -16,7 +27,7 @@ const chapters = [
     body:
       "I grew up in West Bengal, India, the kind of place where small questions about the natural world quickly turn into big curiosities. Chemistry was the language that first made the invisible feel real to me.",
     quote: "Why does anything become anything else?",
-    image: chapter1,
+    image: CH1,
   },
   {
     tag: "Foundation",
@@ -25,7 +36,7 @@ const chapters = [
     body:
       "I pursued my Master's in Chemistry at the Indian Institute of Technology Patna, where rigorous training in physical and analytical chemistry shaped how I think about molecules and measurements. The Best Master's Project award here was less about a prize and more about realizing research could be a calling.",
     quote: "Precision is a form of respect for nature.",
-    image: chapter2,
+    image: CH2,
   },
   {
     tag: "Leap",
@@ -34,7 +45,8 @@ const chapters = [
     body:
       "I left for the United States alone, carrying two suitcases and a fully funded PhD position at Kent State University. The first months were equal parts intimidation and exhilaration — a new country, a new lab, and a new way of working.",
     quote: "Curiosity is portable. Ambition is not optional.",
-    image: chapter3,
+    image: CH3,
+    imageAlt: CH3_ALT,
   },
   {
     tag: "Research",
@@ -43,7 +55,8 @@ const chapters = [
     body:
       "My doctoral work centers on RNA–protein interactions and m6A reader proteins — the molecules that decide which messages in our cells get read, and how. Biophysics gave me a way to ask thermodynamic questions about biology and actually answer them.",
     quote: "Every binding event is a tiny sentence in the language of life.",
-    image: chapter4,
+    image: null,
+    placeholder: "📷 Photo coming soon — Kent State research lab",
   },
   {
     tag: "Mentorship",
@@ -52,7 +65,8 @@ const chapters = [
     body:
       "Mentoring undergraduates and participating in STEM outreach reshaped what success looks like for me. Some of my proudest moments have been watching mentees win their own awards at the Ohio Academy of Science and the ACS Honors Week.",
     quote: "Science multiplies when it's shared.",
-    image: chapter5,
+    image: null,
+    placeholder: "📷 Photo coming soon — mentorship moment or award ceremony",
   },
   {
     tag: "Vision",
@@ -61,7 +75,7 @@ const chapters = [
     body:
       "I want to keep working at the interface of biophysics and biomedicine — where mechanistic insight into RNA–protein recognition becomes leverage for new diagnostics, modulators, and therapies. Academic or industry, the question is the same: how do we read the molecular language well enough to rewrite it for human good?",
     quote: "Driven by curiosity, guided by molecular interactions.",
-    image: chapter6,
+    image: CH6,
   },
 ];
 
