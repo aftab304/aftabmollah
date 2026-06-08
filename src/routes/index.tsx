@@ -1,37 +1,28 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Linkedin, Mail, GraduationCap, BookOpen, Sparkles } from "lucide-react";
-import { portraitUrl, linkedinUrl, scholarUrl, orcidUrl, email } from "@/content/site";
+import {
+  portraitUrl,
+  portraitAlt,
+  linkedinUrl,
+  scholarUrl,
+  orcidUrl,
+  researchgateUrl,
+  cvUrl,
+  email,
+} from "@/content/site";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-import { UpdatesSection } from "./updates";
-import { ExpertiseSection } from "./expertise";
-import { StorySection } from "./story";
-import { ResearchSection } from "./research";
-import { ExperienceSection } from "./experience";
-import { PublicationsSection } from "./publications";
-import { ContactSection } from "./contact";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Aftab Mollah — Decoding RNA-Protein Interactions" },
-      {
-        name: "description",
-        content:
-          "PhD candidate in Chemistry & Biochemistry at Kent State University. RNA-protein interactions, m6A reader proteins, biophysics, and molecular biology.",
-      },
-      { property: "og:title", content: "Aftab Mollah — Decoding RNA-Protein Interactions" },
-      { property: "og:description", content: "PhD candidate in Chemistry & Biochemistry — RNA-protein biophysics." },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: HomePage,
-});
 
 const tags = ["PhD Candidate", "Biochemist", "Molecular Biologist", "RNA Researcher"];
 
-function HeroSection() {
+function RGIcon({ className = "" }: { className?: string }) {
+  return (
+    <span className={`font-display text-[10px] font-semibold tracking-tight ${className}`} aria-hidden>
+      RG
+    </span>
+  );
+}
+
+export function HeroSection() {
   const ref = useVariantOnView<HTMLElement>("hero");
   return (
     <section id="hero" ref={ref} className="relative scroll-mt-24">
@@ -80,13 +71,26 @@ function HeroSection() {
           </motion.div>
 
           <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.32 }}
+            className="mt-3"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full bg-teal-500/15 text-teal-300 px-3 py-1 text-xs">
+              <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
+              Seeking postdoctoral &amp; industry R&amp;D positions · Available from June 2027
+            </span>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="mt-9 flex flex-wrap items-center gap-3"
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-7 flex flex-wrap items-center gap-3"
           >
             <a
-              href="#"
+              href={cvUrl}
+              download="Aftab_Mollah_CV.pdf"
               className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-3 text-sm font-medium shadow-glow hover:opacity-90"
             >
               <Download className="h-4 w-4" />
@@ -116,12 +120,13 @@ function HeroSection() {
               { href: linkedinUrl, icon: Linkedin, label: "LinkedIn" },
               { href: scholarUrl, icon: GraduationCap, label: "Google Scholar" },
               { href: orcidUrl, icon: BookOpen, label: "ORCID" },
+              { href: researchgateUrl, icon: RGIcon, label: "ResearchGate" },
               { href: `mailto:${email}`, icon: Mail, label: "Email" },
             ].map(({ href, icon: Icon, label }) => (
               <a
                 key={label}
                 href={href}
-                target="_blank"
+                target={href.startsWith("mailto:") ? undefined : "_blank"}
                 rel="noreferrer"
                 aria-label={label}
                 className="glass h-10 w-10 grid place-items-center rounded-full hover:shadow-glow transition-all hover:-translate-y-0.5"
@@ -143,7 +148,7 @@ function HeroSection() {
             <div className="relative overflow-hidden rounded-[1.6rem] aspect-[4/5]">
               <img
                 src={portraitUrl}
-                alt="Portrait of Aftab Mollah"
+                alt={portraitAlt}
                 className="h-full w-full object-cover"
                 referrerPolicy="no-referrer"
                 onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
@@ -166,9 +171,9 @@ function HeroSection() {
       <div className="mx-auto max-w-7xl px-6 pb-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { n: "6+", l: "Publications & presentations" },
+            { n: "2", l: "Peer-reviewed articles" },
+            { n: "4", l: "Conference presentations" },
             { n: "15+", l: "Experimental techniques" },
-            { n: "3", l: "International conferences" },
             { n: "5+", l: "Awards & scholarships" },
           ].map((s, i) => (
             <motion.div
@@ -210,22 +215,5 @@ function HeroSection() {
         ))}
       </div>
     </section>
-  );
-}
-
-function HomePage() {
-  // Suppress unused Link import; keep available for future cross-route links
-  void Link;
-  return (
-    <>
-      <HeroSection />
-      <UpdatesSection />
-      <ExpertiseSection />
-      <StorySection />
-      <ResearchSection />
-      <ExperienceSection />
-      <PublicationsSection />
-      <ContactSection />
-    </>
   );
 }

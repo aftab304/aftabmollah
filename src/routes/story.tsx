@@ -1,30 +1,25 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-import chapter1 from "@/assets/story/chapter-1.jpg";
-import chapter2 from "@/assets/story/chapter-2.jpg";
-import chapter3 from "@/assets/story/chapter-3.jpg";
-import chapter4 from "@/assets/story/chapter-4.jpg";
-import chapter5 from "@/assets/story/chapter-5.jpg";
-import chapter6 from "@/assets/story/chapter-6.jpg";
 
-export const Route = createFileRoute("/story")({
-  head: () => ({
-    meta: [
-      { title: "My Story — Aftab Mollah" },
-      { name: "description", content: "From West Bengal to IIT Patna to Kent State — a curiosity-led journey through chemistry, biophysics, and RNA biology." },
-      { property: "og:title", content: "My Story — Aftab Mollah" },
-      { property: "og:description", content: "A cinematic journey from West Bengal to Kent State." },
-      { property: "og:url", content: "/story" },
-      { property: "og:type", content: "article" },
-    ],
-    links: [{ rel: "canonical", href: "/story" }],
-  }),
-  component: StoryPage,
-});
+const CH1 = "https://drive.google.com/uc?export=view&id=1QFDauhhOoF4jfiYapewbb93wHVawU9BZ";
+const CH2 = "https://drive.google.com/uc?export=view&id=1NQwir11zKPcvibfF38SDXEO-uAPXCSDE";
+const CH3 = "https://www.kent.edu/sites/default/files/styles/hero_image/public/2022-03/KSU_Campus_AerialMay2019_DSC5618-Edit.jpg";
+const CH3_ALT = "Kent State University campus";
+const CH6 = "https://drive.google.com/uc?export=view&id=1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
 
-const chapters = [
+type Chapter = {
+  tag: string;
+  year: string;
+  title: string;
+  body: string;
+  quote: string;
+  image: string | null;
+  imageAlt?: string;
+  placeholder?: string;
+};
+
+const chapters: Chapter[] = [
   {
     tag: "Origin",
     year: "West Bengal",
@@ -32,7 +27,7 @@ const chapters = [
     body:
       "I grew up in West Bengal, India, the kind of place where small questions about the natural world quickly turn into big curiosities. Chemistry was the language that first made the invisible feel real to me.",
     quote: "Why does anything become anything else?",
-    image: chapter1,
+    image: CH1,
   },
   {
     tag: "Foundation",
@@ -41,7 +36,7 @@ const chapters = [
     body:
       "I pursued my Master's in Chemistry at the Indian Institute of Technology Patna, where rigorous training in physical and analytical chemistry shaped how I think about molecules and measurements. The Best Master's Project award here was less about a prize and more about realizing research could be a calling.",
     quote: "Precision is a form of respect for nature.",
-    image: chapter2,
+    image: CH2,
   },
   {
     tag: "Leap",
@@ -50,7 +45,8 @@ const chapters = [
     body:
       "I left for the United States alone, carrying two suitcases and a fully funded PhD position at Kent State University. The first months were equal parts intimidation and exhilaration — a new country, a new lab, and a new way of working.",
     quote: "Curiosity is portable. Ambition is not optional.",
-    image: chapter3,
+    image: CH3,
+    imageAlt: CH3_ALT,
   },
   {
     tag: "Research",
@@ -59,7 +55,8 @@ const chapters = [
     body:
       "My doctoral work centers on RNA–protein interactions and m6A reader proteins — the molecules that decide which messages in our cells get read, and how. Biophysics gave me a way to ask thermodynamic questions about biology and actually answer them.",
     quote: "Every binding event is a tiny sentence in the language of life.",
-    image: chapter4,
+    image: null,
+    placeholder: "📷 Photo coming soon — Kent State research lab",
   },
   {
     tag: "Mentorship",
@@ -68,7 +65,8 @@ const chapters = [
     body:
       "Mentoring undergraduates and participating in STEM outreach reshaped what success looks like for me. Some of my proudest moments have been watching mentees win their own awards at the Ohio Academy of Science and the ACS Honors Week.",
     quote: "Science multiplies when it's shared.",
-    image: chapter5,
+    image: null,
+    placeholder: "📷 Photo coming soon — mentorship moment or award ceremony",
   },
   {
     tag: "Vision",
@@ -77,7 +75,7 @@ const chapters = [
     body:
       "I want to keep working at the interface of biophysics and biomedicine — where mechanistic insight into RNA–protein recognition becomes leverage for new diagnostics, modulators, and therapies. Academic or industry, the question is the same: how do we read the molecular language well enough to rewrite it for human good?",
     quote: "Driven by curiosity, guided by molecular interactions.",
-    image: chapter6,
+    image: CH6,
   },
 ];
 
@@ -121,14 +119,21 @@ export function StorySection() {
                   <div className="glass rounded-3xl p-3 relative overflow-hidden">
                     <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-[var(--azure)]/40 to-[var(--cyan)]/30 blur-2xl pointer-events-none" />
                     <div className="relative aspect-square rounded-2xl overflow-hidden">
-                      <img
-                        src={c.image}
-                        alt=""
-                        loading="lazy"
-                        width={768}
-                        height={768}
-                        className="h-full w-full object-cover"
-                      />
+                      {c.image ? (
+                        <img
+                          src={c.image}
+                          alt={c.imageAlt ?? ""}
+                          loading="lazy"
+                          width={768}
+                          height={768}
+                          referrerPolicy="no-referrer"
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="h-full w-full grid place-items-center bg-muted/40 text-center px-6">
+                          <p className="text-sm text-muted-foreground leading-relaxed">{c.placeholder}</p>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-foreground/90">
                         <span className="bg-background/70 backdrop-blur rounded-full px-2.5 py-1">Chapter {i + 1}</span>
@@ -146,6 +151,3 @@ export function StorySection() {
   );
 }
 
-function StoryPage() {
-  return <StorySection />;
-}

@@ -1,24 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Mail, Linkedin, GraduationCap, BookOpen, Send, Check } from "lucide-react";
 import { email, linkedinUrl, scholarUrl, orcidUrl, researchgateUrl } from "@/content/site";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact & Scientific Vision — Aftab Mollah" },
-      { name: "description", content: "Get in touch about RNA-protein interactions, collaborations, and postdoctoral or industry opportunities." },
-      { property: "og:title", content: "Contact — Aftab Mollah" },
-      { property: "og:description", content: "Collaboration, postdoc, and industry inquiries welcome." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: ContactPage,
-});
 
 export function ContactSection() {
   const ref = useVariantOnView<HTMLElement>("contact");
@@ -105,7 +90,7 @@ export function ContactSection() {
             { href: linkedinUrl, icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/aftabmollah" },
             { href: scholarUrl, icon: GraduationCap, label: "Google Scholar", value: "scholar.google.com" },
             { href: researchgateUrl, icon: BookOpen, label: "ResearchGate", value: "researchgate.net" },
-            { href: orcidUrl, icon: BookOpen, label: "ORCID", value: "orcid.org" },
+            { href: orcidUrl, icon: BookOpen, label: "ORCID", value: "orcid.org/0009-0006-8601-5984" },
           ].map(it => {
             const Icon = it.icon;
             return (

@@ -1,27 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { updates } from "@/content/site";
+import { updates, updateImages, updatePlaceholders } from "@/content/site";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-import awardImg from "@/assets/updates/award.jpg";
-import conferenceImg from "@/assets/updates/conference.jpg";
-import publicationImg from "@/assets/updates/publication.jpg";
-import mentorshipImg from "@/assets/updates/mentorship.jpg";
-
-export const Route = createFileRoute("/updates")({
-  head: () => ({
-    meta: [
-      { title: "Recent Updates — Aftab Mollah" },
-      { name: "description", content: "Recent awards, publications, talks, and mentorship highlights." },
-      { property: "og:title", content: "Recent Updates — Aftab Mollah" },
-      { property: "og:description", content: "A scientific notice board of recent highlights." },
-      { property: "og:url", content: "/updates" },
-    ],
-    links: [{ rel: "canonical", href: "/updates" }],
-  }),
-  component: UpdatesPage,
-});
 
 const sizeMap: Record<string, string> = {
   sm: "md:col-span-3 md:row-span-1",
@@ -29,13 +10,6 @@ const sizeMap: Record<string, string> = {
   lg: "md:col-span-6 md:row-span-1",
 };
 
-function imageForTag(tag: string): string {
-  const t = tag.toLowerCase();
-  if (t.includes("mentor") || t.includes("service")) return mentorshipImg;
-  if (t.includes("conference")) return conferenceImg;
-  if (t.includes("publication")) return publicationImg;
-  return awardImg;
-}
 
 export function UpdatesSection() {
   const [open, setOpen] = useState<string | null>(null);
@@ -52,7 +26,8 @@ export function UpdatesSection() {
         {updates.map((u, i) => {
           const size = sizeMap[u.size ?? "md"];
           const isOpen = open === u.id;
-          const img = imageForTag(u.tag);
+          const img = updateImages[u.id];
+          const placeholder = updatePlaceholders[u.id];
           return (
             <motion.button
               key={u.id}
@@ -66,13 +41,20 @@ export function UpdatesSection() {
               className={`${size} text-left glass rounded-2xl overflow-hidden relative hover:shadow-glow transition-all min-h-[300px] flex flex-col`}
             >
               <div className="relative h-32 w-full overflow-hidden">
-                <img
-                  src={img}
-                  alt=""
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover opacity-90 group-hover:scale-105 transition-transform"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                {img ? (
+                  <img
+                    src={img}
+                    alt=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    className="absolute inset-0 h-full w-full object-cover opacity-90 group-hover:scale-105 transition-transform"
+                  />
+                ) : (
+                  <div className="absolute inset-0 grid place-items-center bg-muted/40 px-4 text-center text-xs text-muted-foreground">
+                    {placeholder ?? "📷 Photo coming soon"}
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent pointer-events-none" />
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-xs">
                   <span className="rounded-full bg-background/80 backdrop-blur px-2.5 py-1 text-[10px] uppercase tracking-wider text-foreground/80">
                     {u.tag}
@@ -100,6 +82,3 @@ export function UpdatesSection() {
   );
 }
 
-function UpdatesPage() {
-  return <UpdatesSection />;
-}

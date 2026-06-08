@@ -78,120 +78,48 @@ export const publications: Publication[] = [
 ];
 
 export const updates = [
-  {
-    id: "u-msno",
-    year: "2026",
-    tag: "Award",
-    title: "Best Graduate Poster — MSNO May Conference",
-    body:
-      "Awarded Best Graduate Poster at the Microscopy Society of Northeastern Ohio May Conference for confocal-microscopy work on RNA–protein complex visualization.",
-    size: "lg",
-  },
-  {
-    id: "u-honors-2026",
-    year: "2026",
-    tag: "Award",
-    title: "Best Graduate Poster — ACS Honors Week",
-    body:
-      "Best Graduate Poster at the annual Honors Week Poster Session by the Student Affiliates of the ACS group, Kent State University.",
-    size: "md",
-  },
-  {
-    id: "u-mentee-honors-2026",
-    year: "2026",
-    tag: "Mentorship",
-    title: "Mentee — Best Undergraduate Poster, ACS Honors Week",
-    body:
-      "An undergraduate I mentor took home Best Undergraduate Poster at the Kent State ACS Honors Week Poster Session.",
-    size: "md",
-  },
-  {
-    id: "u-macdonald",
-    year: "2025",
-    tag: "Award",
-    title: "MacDonald Divisional Award — Biochemistry",
-    body:
-      "Received the MacDonald Divisional Award for research excellence in Biochemistry at Kent State University.",
-    size: "md",
-  },
-  {
-    id: "u-papiska",
-    year: "2025",
-    tag: "Scholarship",
-    title: "Dr. Harold R. Papiska Graduate Scholarship",
-    body:
-      "Selected for the Dr. Harold R. Papiska Graduate Scholarship in Chemistry, Kent State University.",
-    size: "md",
-  },
-  {
-    id: "u-mentee-ohio",
-    year: "2025",
-    tag: "Mentorship",
-    title: "Mentee — Best Undergraduate Poster, Ohio Academy of Science",
-    body:
-      "An undergraduate researcher I mentor won Best Undergraduate Poster at the Ohio Academy of Science annual meeting.",
-    size: "lg",
-  },
-  {
-    id: "u-symposium-judge",
-    year: "2025",
-    tag: "Service",
-    title: "Judge — Annual Undergraduate Research Symposium",
-    body:
-      "Served as a judge at the Annual Undergraduate Research Symposium 2025 at Kent State University — a highlight of mentoring the next generation of scientists.",
-    size: "md",
-  },
-  {
-    id: "u-bps-la",
-    year: "2025",
-    tag: "Conference",
-    title: "Presented at Biophysical Society, Los Angeles",
-    body:
-      "Presented research on RNA–protein recognition in the m6A epitranscriptome at the Biophysical Society Annual Meeting in Los Angeles.",
-    size: "md",
-  },
-  {
-    id: "u-pub-biomolecules",
-    year: "2025",
-    tag: "Publication",
-    title: "Paper out in Biomolecules — m6A Recognition Motifs",
-    body:
-      "First-author study on key sequence motifs essential for m6A recognition by reader proteins, published in MDPI Biomolecules.",
-    size: "lg",
-  },
-  {
-    id: "u-iit",
-    year: "2019",
-    tag: "Origin",
-    title: "Best Master's Project — IIT Patna",
-    body:
-      "Awarded Best Master's Project by the Department of Chemistry, Indian Institute of Technology (IIT) Patna — the start of an RNA-centric research journey.",
-    size: "md",
-  },
-  {
-    id: "u-bps-philly",
-    year: "2024",
-    tag: "Conference",
-    title: "Presented at Biophysical Society, Philadelphia",
-    body:
-      "Poster on biophysical characterization of m6A reader proteins recognizing DRACH motifs at BPS Philadelphia.",
-    size: "md",
-  },
-  {
-    id: "u-rustbelt",
-    year: "2024",
-    tag: "Conference",
-    title: "Talk at Rustbelt RNA Meeting",
-    body:
-      "Talk on decoding m6A readers — sequence specificity and thermodynamics — at the Rustbelt RNA Meeting.",
-    size: "md",
-  },
+  { id: "u-msno", year: "2026", tag: "Award", title: "Best Graduate Poster — MSNO May Conference", body: "Awarded Best Graduate Poster at the Microscopy Society of Northeastern Ohio May Conference for confocal-microscopy work on RNA–protein complex visualization.", size: "lg" },
+  { id: "u-honors-2026", year: "2026", tag: "Award", title: "Best Graduate Poster — ACS Honors Week", body: "Best Graduate Poster at the annual Honors Week Poster Session by the Student Affiliates of the ACS group, Kent State University.", size: "md" },
+  { id: "u-mentee-honors-2026", year: "2026", tag: "Mentorship", title: "Mentee — Best Undergraduate Poster, ACS Honors Week", body: "An undergraduate I mentor took home Best Undergraduate Poster at the Kent State ACS Honors Week Poster Session.", size: "md" },
+  { id: "u-macdonald", year: "2025", tag: "Award", title: "MacDonald Divisional Award — Biochemistry", body: "Received the MacDonald Divisional Award for research excellence in Biochemistry at Kent State University.", size: "md" },
+  { id: "u-papiska", year: "2025", tag: "Scholarship", title: "Dr. Harold R. Papiska Graduate Scholarship", body: "Selected for the Dr. Harold R. Papiska Graduate Scholarship in Chemistry, Kent State University.", size: "md" },
+  { id: "u-mentee-ohio", year: "2025", tag: "Mentorship", title: "Mentee — Best Undergraduate Poster, Ohio Academy of Science", body: "An undergraduate researcher I mentor won Best Undergraduate Poster at the Ohio Academy of Science annual meeting.", size: "lg" },
+  { id: "u-symposium-judge", year: "2025", tag: "Service", title: "Judge — Annual Undergraduate Research Symposium", body: "Served as a judge at the Annual Undergraduate Research Symposium 2025 at Kent State University — a highlight of mentoring the next generation of scientists.", size: "md" },
+  { id: "u-bps-la", year: "2025", tag: "Conference", title: "Presented at Biophysical Society, Los Angeles", body: "Presented research on RNA–protein recognition in the m6A epitranscriptome at the Biophysical Society Annual Meeting in Los Angeles.", size: "md" },
+  { id: "u-pub-biomolecules", year: "2025", tag: "Publication", title: "Paper out in Biomolecules — m6A Recognition Motifs", body: "First-author study on key sequence motifs essential for m6A recognition by reader proteins, published in MDPI Biomolecules.", size: "lg" },
+  { id: "u-iit", year: "2019", tag: "Origin", title: "Best Master's Project — IIT Patna", body: "Awarded Best Master's Project by the Department of Chemistry, Indian Institute of Technology (IIT) Patna — the start of an RNA-centric research journey.", size: "md" },
+  { id: "u-bps-philly", year: "2024", tag: "Conference", title: "Presented at Biophysical Society, Philadelphia", body: "Poster on biophysical characterization of m6A reader proteins recognizing DRACH motifs at BPS Philadelphia.", size: "md" },
+  { id: "u-rustbelt", year: "2024", tag: "Conference", title: "Talk at Rustbelt RNA Meeting", body: "Talk on decoding m6A readers — sequence specificity and thermodynamics — at the Rustbelt RNA Meeting.", size: "md" },
 ];
+
+// Per-id image map. Drive view URLs as requested by content owner.
+// `null` = render a "photo coming soon" placeholder card instead of an <img>.
+export const updateImages: Record<string, string | null> = {
+  "u-msno": "https://drive.google.com/uc?export=view&id=1tJAUhFhc7HcVcFgp_fcrLsojvk5PrrNW",
+  "u-honors-2026": "https://drive.google.com/uc?export=view&id=15rxNjiBYqd0kFTbbXdLBSsjp838qpMVT",
+  "u-mentee-honors-2026": null,
+  "u-macdonald": "https://drive.google.com/uc?export=view&id=1n4ZHNAN6dDCIIfqd5U-GcIzDKMU8Z0_9",
+  "u-papiska": "https://drive.google.com/uc?export=view&id=179toVZVQK6qlKaeO21Yry-rId5j09mn8",
+  "u-mentee-ohio": null,
+  "u-symposium-judge": "https://drive.google.com/uc?export=view&id=14v0wqLhuKWHnKDU3ebIGwPAreoy5Hed8",
+  "u-bps-la": "https://drive.google.com/uc?export=view&id=10kYF0_n39AkgaKGwSGmB3651nQDc6659",
+  "u-pub-biomolecules": "https://drive.google.com/uc?export=view&id=1wRfcaXLw7fHLm7_o2BPdEU7hNm7GIof9",
+  "u-iit": null,
+  "u-bps-philly": "https://drive.google.com/uc?export=view&id=1nXwjl-PoD6PgnSsv5yGp3iU9kHTiyNG4",
+  "u-rustbelt": null,
+};
+export const updatePlaceholders: Record<string, string> = {
+  "u-mentee-honors-2026": "📷 Mentee with award — ACS Honors Week 2026",
+  "u-mentee-ohio": "📷 Mentee — Ohio Academy of Science 2025",
+  "u-iit": "📷 Photo coming soon",
+  "u-rustbelt": "📷 Photo coming soon",
+};
 
 export const linkedinUrl = "https://www.linkedin.com/in/aftabmollah/";
 export const scholarUrl = "https://scholar.google.com/citations?user=V5A0-tkAAAAJ&hl=en";
-export const orcidUrl = "https://orcid.org/";
+export const orcidUrl = "https://orcid.org/0009-0006-8601-5984";
 export const researchgateUrl = "https://www.researchgate.net/profile/Aftab-Mollah-2";
-export const portraitUrl =
-  "https://media.licdn.com/dms/image/v2/D5603AQE1SXorW-Mn7w/profile-displayphoto-scale_400_400/B56ZmTRxoxJsAg-/0/1759112535045?e=1781740800&v=beta&t=Ri6q2iJHfPJD9VjcO7wPNCxcVZp-6AXICmu9dt1F84A";
+export const cvUrl = "https://drive.google.com/uc?export=download&id=1Ig6O1EOzxBcMdurvCGSdWV3v1Q2kpR5k";
+export const portraitUrl = "https://drive.google.com/uc?export=view&id=1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
+export const portraitAlt = "Aftab Mollah — PhD Candidate, Kent State University";
 export const email = "amollah1@kent.edu";

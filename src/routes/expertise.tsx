@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import {
@@ -7,20 +6,6 @@ import {
   CellCultureAnim, NanotechAnim,
 } from "@/components/TechniqueAnims";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
-
-export const Route = createFileRoute("/expertise")({
-  head: () => ({
-    meta: [
-      { title: "Techniques & Expertise — Aftab Mollah" },
-      { name: "description", content: "ITC, fluorescence spectroscopy, confocal microscopy, protein purification, molecular cloning, and 15+ experimental techniques." },
-      { property: "og:title", content: "Techniques & Expertise — Aftab Mollah" },
-      { property: "og:description", content: "An interactive dashboard of experimental expertise." },
-      { property: "og:url", content: "/expertise" },
-    ],
-    links: [{ rel: "canonical", href: "/expertise" }],
-  }),
-  component: ExpertisePage,
-});
 
 const hero = [
   { title: "Isothermal Titration Calorimetry", short: "ITC", desc: "Direct thermodynamic readout of binding — ΔH, ΔS, Kd, and stoichiometry in a single experiment.", anim: ITCAnim },
@@ -104,6 +89,3 @@ export function ExpertiseSection() {
   );
 }
 
-function ExpertisePage() {
-  return <ExpertiseSection />;
-}
