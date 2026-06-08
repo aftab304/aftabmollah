@@ -93,6 +93,3 @@ export function ExperienceSection() {
   );
 }
 
-function ExperiencePage() {
-  return <ExperienceSection />;
-}

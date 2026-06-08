@@ -82,6 +82,3 @@ export function UpdatesSection() {
   );
 }
 
-function UpdatesPage() {
-  return <UpdatesSection />;
-}

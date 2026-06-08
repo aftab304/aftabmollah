@@ -116,6 +116,3 @@ export function PublicationsSection() {
   );
 }
 
-function PublicationsPage() {
-  return <PublicationsSection />;
-}

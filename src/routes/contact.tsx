@@ -90,7 +90,7 @@ export function ContactSection() {
             { href: linkedinUrl, icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/aftabmollah" },
             { href: scholarUrl, icon: GraduationCap, label: "Google Scholar", value: "scholar.google.com" },
             { href: researchgateUrl, icon: BookOpen, label: "ResearchGate", value: "researchgate.net" },
-            { href: orcidUrl, icon: BookOpen, label: "ORCID", value: "orcid.org" },
+            { href: orcidUrl, icon: BookOpen, label: "ORCID", value: "orcid.org/0009-0006-8601-5984" },
           ].map(it => {
             const Icon = it.icon;
             return (

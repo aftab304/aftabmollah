@@ -151,6 +151,3 @@ export function StorySection() {
   );
 }
 
-function StoryPage() {
-  return <StorySection />;
-}
