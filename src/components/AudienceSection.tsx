@@ -1,80 +1,58 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 
-const academic = [
-  "Expert in RNA-protein biophysics — ITC, fluorescence spectroscopy, confocal microscopy",
-  "First-author publications in Cell Press and MDPI journals",
-  "Trained in structural biology, molecular cloning, and mammalian cell culture",
-  "Mentorship track record — mentees winning awards at Ohio Academy of Science and ACS Honors Week",
-  "Seeking postdoctoral positions in RNA biology, epitranscriptomics, or biophysics",
-];
-
-const industry = [
-  "15+ validated assay and characterization techniques transferable to drug discovery pipelines",
-  "Target validation: quantifying RNA-binding protein interactions relevant to cancer, neurodegeneration, and immune modulation",
-  "Assay development: ITC, EMSA, fluorescence binding — adaptable to high-throughput formats",
-  "Comfortable working across biology, chemistry, and biophysics in multidisciplinary teams",
-  "Open to R&D scientist, assay development, and biophysics roles in biotech and pharma",
+const stats = [
+  { n: "2", l: "First-author papers" },
+  { n: "15+", l: "Experimental techniques" },
+  { n: "3", l: "Institutions, 2 continents" },
+  { n: "5+", l: "Awards & scholarships" },
 ];
 
 export function AudienceSection() {
   return (
     <section id="audience" className="mx-auto max-w-7xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
-        eyebrow="Who I work with"
-        title={<>What I bring to the <span className="text-gradient italic">table</span>.</>}
-        description="For both academic labs and industry R&D teams."
+        eyebrow="What I Bring"
+        title={<>The short version, for anyone <span className="text-gradient italic">who wants it</span>.</>}
       />
-      <div className="mt-12 grid md:grid-cols-2 gap-6">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="glass rounded-3xl p-7 md:p-9 relative overflow-hidden"
-        >
-          <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-teal-400/40 to-cyan-400/30 blur-3xl pointer-events-none" />
-          <div className="inline-flex items-center gap-2 rounded-full bg-teal-500/15 text-teal-300 px-3 py-1 text-[10px] uppercase tracking-[0.18em]">
-            For Academic Postdocs
-          </div>
-          <h3 className="mt-4 font-display text-2xl md:text-3xl">Academic research labs</h3>
-          <ul className="mt-5 space-y-3">
-            {academic.map((b) => (
-              <li key={b} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal-500/15 text-teal-300 px-3 py-1.5 text-xs">
-            Available from June 2027
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.05 }}
-          className="glass rounded-3xl p-7 md:p-9 relative overflow-hidden"
-        >
-          <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-amber-400/40 to-orange-400/30 blur-3xl pointer-events-none" />
-          <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/15 text-amber-300 px-3 py-1 text-[10px] uppercase tracking-[0.18em]">
-            For Industry R&amp;D
-          </div>
-          <h3 className="mt-4 font-display text-2xl md:text-3xl">Biotech &amp; pharma R&amp;D</h3>
-          <ul className="mt-5 space-y-3">
-            {industry.map((b) => (
-              <li key={b} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-400 shrink-0" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-amber-500/15 text-amber-300 px-3 py-1.5 text-xs">
-            Open to opportunities from June 2027
-          </div>
-        </motion.div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-12 glass rounded-3xl p-8 md:p-14 relative overflow-hidden"
+      >
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-56 w-[36rem] rounded-full bg-gradient-to-br from-[var(--azure)]/30 to-[var(--cyan)]/30 blur-3xl pointer-events-none" />
+        <h3 className="relative font-display text-3xl md:text-5xl leading-tight text-center text-balance max-w-3xl mx-auto">
+          I quantify how <span className="text-gradient italic">biology makes decisions</span> at the molecular level.
+        </h3>
+        <div className="relative mt-8 max-w-[700px] mx-auto space-y-5 text-base md:text-lg leading-relaxed text-foreground/85 dark:text-muted-foreground">
+          <p>
+            My work sits at the intersection of biophysics and RNA biology — specifically, how
+            proteins recognize chemically modified RNA and what that recognition costs
+            thermodynamically. I use isothermal titration calorimetry, fluorescence spectroscopy,
+            and confocal microscopy to get numbers, not just observations.
+          </p>
+          <p>
+            That means I'm useful anywhere precision matters: understanding a biological mechanism
+            deeply enough to intervene in it, whether in an academic lab or an R&amp;D setting.
+          </p>
+        </div>
+        <div className="relative mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.l}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="glass rounded-2xl p-5 text-center"
+            >
+              <p className="font-display text-3xl md:text-4xl text-[var(--azure)]">{s.n}</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{s.l}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

@@ -95,17 +95,17 @@ export const updates = [
 // Per-id image map. Drive view URLs as requested by content owner.
 // `null` = render a "photo coming soon" placeholder card instead of an <img>.
 export const updateImages: Record<string, string | null> = {
-  "u-msno": "https://drive.google.com/uc?export=view&id=1tJAUhFhc7HcVcFgp_fcrLsojvk5PrrNW",
-  "u-honors-2026": "https://drive.google.com/uc?export=view&id=15rxNjiBYqd0kFTbbXdLBSsjp838qpMVT",
+  "u-msno": "https://lh3.googleusercontent.com/d/1tJAUhFhc7HcVcFgp_fcrLsojvk5PrrNW",
+  "u-honors-2026": "https://lh3.googleusercontent.com/d/15rxNjiBYqd0kFTbbXdLBSsjp838qpMVT",
   "u-mentee-honors-2026": null,
-  "u-macdonald": "https://drive.google.com/uc?export=view&id=1n4ZHNAN6dDCIIfqd5U-GcIzDKMU8Z0_9",
-  "u-papiska": "https://drive.google.com/uc?export=view&id=179toVZVQK6qlKaeO21Yry-rId5j09mn8",
+  "u-macdonald": "https://lh3.googleusercontent.com/d/1n4ZHNAN6dDCIIfqd5U-GcIzDKMU8Z0_9",
+  "u-papiska": "https://lh3.googleusercontent.com/d/179toVZVQK6qlKaeO21Yry-rId5j09mn8",
   "u-mentee-ohio": null,
-  "u-symposium-judge": "https://drive.google.com/uc?export=view&id=14v0wqLhuKWHnKDU3ebIGwPAreoy5Hed8",
-  "u-bps-la": "https://drive.google.com/uc?export=view&id=10kYF0_n39AkgaKGwSGmB3651nQDc6659",
-  "u-pub-biomolecules": "https://drive.google.com/uc?export=view&id=1wRfcaXLw7fHLm7_o2BPdEU7hNm7GIof9",
+  "u-symposium-judge": "https://lh3.googleusercontent.com/d/14v0wqLhuKWHnKDU3ebIGwPAreoy5Hed8",
+  "u-bps-la": "https://lh3.googleusercontent.com/d/10kYF0_n39AkgaKGwSGmB3651nQDc6659",
+  "u-pub-biomolecules": "https://lh3.googleusercontent.com/d/1wRfcaXLw7fHLm7_o2BPdEU7hNm7GIof9",
   "u-iit": null,
-  "u-bps-philly": "https://drive.google.com/uc?export=view&id=1nXwjl-PoD6PgnSsv5yGp3iU9kHTiyNG4",
+  "u-bps-philly": "https://lh3.googleusercontent.com/d/1nXwjl-PoD6PgnSsv5yGp3iU9kHTiyNG4",
   "u-rustbelt": null,
 };
 export const updatePlaceholders: Record<string, string> = {
@@ -120,6 +120,6 @@ export const scholarUrl = "https://scholar.google.com/citations?user=V5A0-tkAAAA
 export const orcidUrl = "https://orcid.org/0009-0006-8601-5984";
 export const researchgateUrl = "https://www.researchgate.net/profile/Aftab-Mollah-2";
 export const cvUrl = "https://drive.google.com/uc?export=download&id=1Ig6O1EOzxBcMdurvCGSdWV3v1Q2kpR5k";
-export const portraitUrl = "https://drive.google.com/uc?export=view&id=1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
+export const portraitUrl = "https://lh3.googleusercontent.com/d/1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
 export const portraitAlt = "Aftab Mollah — PhD Candidate, Kent State University";
-export const email = "amollah1@kent.edu";
+export const email = "amollah@kent.edu";

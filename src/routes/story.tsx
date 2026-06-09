@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
 
-const CH1 = "https://drive.google.com/uc?export=view&id=1QFDauhhOoF4jfiYapewbb93wHVawU9BZ";
-const CH2 = "https://drive.google.com/uc?export=view&id=1NQwir11zKPcvibfF38SDXEO-uAPXCSDE";
+const CH1 = "https://lh3.googleusercontent.com/d/1QFDauhhOoF4jfiYapewbb93wHVawU9BZ";
+const CH2 = "https://lh3.googleusercontent.com/d/1NQwir11zKPcvibfF38SDXEO-uAPXCSDE";
 const CH3 = "https://www.kent.edu/sites/default/files/styles/hero_image/public/2022-03/KSU_Campus_AerialMay2019_DSC5618-Edit.jpg";
 const CH3_ALT = "Kent State University campus";
-const CH6 = "https://drive.google.com/uc?export=view&id=1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
+const CH6 = "https://lh3.googleusercontent.com/d/1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
 
 type Chapter = {
   tag: string;

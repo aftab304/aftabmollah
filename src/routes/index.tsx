@@ -76,8 +76,8 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.32 }}
             className="mt-3"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-teal-500/15 text-teal-300 px-3 py-1 text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
+            <span className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 dark:bg-teal-500/15 text-teal-800 dark:text-teal-300 px-3 py-1 text-xs font-medium">
+              <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400" />
               Seeking postdoctoral &amp; industry R&amp;D positions · Available from June 2027
             </span>
           </motion.div>
@@ -162,7 +162,7 @@ export function HeroSection() {
           </div>
           <div className="absolute -bottom-4 -right-4 glass rounded-2xl px-4 py-2 text-xs shadow-glow">
             <span className="text-muted-foreground">Currently researching · </span>
-            <span className="font-medium">m6A reader proteins</span>
+            <span className="font-medium">RNA–Protein Interactions</span>
           </div>
         </motion.div>
       </div>
