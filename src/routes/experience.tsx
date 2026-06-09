@@ -7,19 +7,19 @@ const items = [
   {
     icon: Microscope, kind: "Research",
     title: "Doctoral Researcher — Kent State University",
-    when: "2021 — Present",
+    when: "2022 — Present",
     body: "Investigating RNA–protein interactions and m6A reader proteins using biophysics and molecular biology.",
   },
   {
     icon: GraduationCap, kind: "Teaching",
     title: "Graduate Teaching Assistant — Department of Chemistry & Biochemistry",
-    when: "2021 — Present · Kent State University",
+    when: "2022 — Present · Kent State University",
     body: "Led general and organic chemistry laboratories; designed problem sets and one-on-one tutoring sessions.",
   },
   {
     icon: Users, kind: "Mentorship",
     title: "Undergraduate Research Mentor",
-    when: "2022 — Present · Kent State University",
+    when: "2023 — Present · Kent State University",
     body: "Mentored undergraduates whose work has won the Ohio Academy of Science and ACS Honors Week poster awards.",
   },
   {
@@ -30,7 +30,7 @@ const items = [
   },
   {
     icon: Mic, kind: "Service",
-    title: "Judge — Undergraduate Research Symposium",
+    title: "Judge — Annual Undergraduate Research Symposium",
     when: "2025 · Kent State University",
     body: "Evaluated undergraduate research presentations across chemistry, biology, and physics tracks.",
   },
@@ -43,7 +43,7 @@ const items = [
   {
     icon: Microscope, kind: "Research",
     title: "Master's Researcher — IIT Patna",
-    when: "2018 — 2020 · Indian Institute of Technology Patna",
+    when: "2020 — 2022 · Indian Institute of Technology Patna",
     body: "Awarded Best Master's Project by the Department of Chemistry for thesis work in physical chemistry.",
   },
 ];
