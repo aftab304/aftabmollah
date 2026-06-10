@@ -8,6 +8,7 @@ import { useVariantOnView } from "@/hooks/useVariantOnView";
 const filters = [
   { id: "all", label: "All" },
   { id: "article", label: "Articles" },
+  { id: "abstract", label: "Abstracts" },
   { id: "poster", label: "Posters" },
   { id: "talk", label: "Talks" },
 ] as const;
