@@ -4,7 +4,7 @@ export type Publication = {
   authors: string;
   venue: string;
   year: number;
-  type: "article" | "poster" | "talk";
+  type: "article" | "poster" | "talk" | "abstract";
   abstract: string;
   link?: string;
   doi?: string;
@@ -27,9 +27,9 @@ export const publications: Publication[] = [
     id: "m6a-biophysj-2024",
     title: "Unveiling the Molecular Mechanisms of N6-methyladenosine (m6A) Recognition by RNA-Binding Proteins",
     authors: "Aftab Mollah, et al.",
-    venue: "Biophysical Journal, Vol. 123, Issue 3, Suppl. 1",
+    venue: "Biophysical Journal, Vol. 123, Issue 3, Suppl. 1 — Conference Abstract",
     year: 2024,
-    type: "article",
+    type: "abstract",
     abstract:
       "We characterize the biophysical and structural determinants by which candidate m6A reader proteins discriminate methylated from unmethylated RNA. Combining isothermal titration calorimetry, fluorescence spectroscopy, and binding assays, the work resolves how subtle methylation marks reshape RNA–protein affinity and selectivity.",
     link: "https://www.cell.com/biophysj/fulltext/S0006-3495(24)03636-1",
@@ -87,13 +87,10 @@ export const updates = [
   { id: "u-symposium-judge", year: "2025", tag: "Service", title: "Judge — Annual Undergraduate Research Symposium", body: "Served as a judge at the Annual Undergraduate Research Symposium 2025 at Kent State University — a highlight of mentoring the next generation of scientists.", size: "md" },
   { id: "u-bps-la", year: "2025", tag: "Conference", title: "Presented at Biophysical Society, Los Angeles", body: "Presented research on RNA–protein recognition in the m6A epitranscriptome at the Biophysical Society Annual Meeting in Los Angeles.", size: "md" },
   { id: "u-pub-biomolecules", year: "2025", tag: "Publication", title: "Paper out in Biomolecules — m6A Recognition Motifs", body: "First-author study on key sequence motifs essential for m6A recognition by reader proteins, published in MDPI Biomolecules.", size: "lg" },
-  { id: "u-iit", year: "2019", tag: "Origin", title: "Best Master's Project — IIT Patna", body: "Awarded Best Master's Project by the Department of Chemistry, Indian Institute of Technology (IIT) Patna — the start of an RNA-centric research journey.", size: "md" },
   { id: "u-bps-philly", year: "2024", tag: "Conference", title: "Presented at Biophysical Society, Philadelphia", body: "Poster on biophysical characterization of m6A reader proteins recognizing DRACH motifs at BPS Philadelphia.", size: "md" },
   { id: "u-rustbelt", year: "2024", tag: "Conference", title: "Talk at Rustbelt RNA Meeting", body: "Talk on decoding m6A readers — sequence specificity and thermodynamics — at the Rustbelt RNA Meeting.", size: "md" },
 ];
 
-// Per-id image map. Drive view URLs as requested by content owner.
-// `null` = render a "photo coming soon" placeholder card instead of an <img>.
 export const updateImages: Record<string, string | null> = {
   "u-msno": "https://lh3.googleusercontent.com/d/1tJAUhFhc7HcVcFgp_fcrLsojvk5PrrNW",
   "u-honors-2026": "https://lh3.googleusercontent.com/d/15rxNjiBYqd0kFTbbXdLBSsjp838qpMVT",
@@ -104,15 +101,12 @@ export const updateImages: Record<string, string | null> = {
   "u-symposium-judge": "https://lh3.googleusercontent.com/d/14v0wqLhuKWHnKDU3ebIGwPAreoy5Hed8",
   "u-bps-la": "https://lh3.googleusercontent.com/d/10kYF0_n39AkgaKGwSGmB3651nQDc6659",
   "u-pub-biomolecules": "https://lh3.googleusercontent.com/d/1wRfcaXLw7fHLm7_o2BPdEU7hNm7GIof9",
-  "u-iit": null,
   "u-bps-philly": "https://lh3.googleusercontent.com/d/1nXwjl-PoD6PgnSsv5yGp3iU9kHTiyNG4",
-  "u-rustbelt": null,
+  "u-rustbelt": "https://lh3.googleusercontent.com/d/1ectr1AhxfengibxWTRPf29-2WlnCv3xd",
 };
 export const updatePlaceholders: Record<string, string> = {
   "u-mentee-honors-2026": "📷 Mentee with award — ACS Honors Week 2026",
   "u-mentee-ohio": "📷 Mentee — Ohio Academy of Science 2025",
-  "u-iit": "📷 Photo coming soon",
-  "u-rustbelt": "📷 Photo coming soon",
 };
 
 export const linkedinUrl = "https://www.linkedin.com/in/aftabmollah/";

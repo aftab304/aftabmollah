@@ -12,7 +12,14 @@ import {
 } from "@/content/site";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
 
-const tags = ["PhD Candidate", "Biochemist", "Molecular Biologist", "RNA Researcher"];
+const tags = [
+  "PhD Candidate",
+  "MSc · Indian Institute of Technology",
+  "MA · Kent State University",
+  "Biochemist",
+  "Molecular Biologist",
+  "RNA Researcher",
+];
 
 function RGIcon({ className = "" }: { className?: string }) {
   return (

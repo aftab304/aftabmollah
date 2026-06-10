@@ -52,7 +52,7 @@ export function ExpertiseSection() {
   return (
     <section id="expertise" ref={ref} className="mx-auto max-w-7xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
-        eyebrow="Experimental Dashboard"
+        eyebrow="Methods & Instrumentation"
         title={<>Techniques & <span className="text-gradient italic">expertise</span>.</>}
         description="An interactive look at the experimental toolkit I bring to RNA-protein biophysics — from thermodynamics to single-cell imaging."
       />
