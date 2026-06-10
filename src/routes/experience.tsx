@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Microscope, GraduationCap, Users, Sparkles, Mic, Award } from "lucide-react";
+import { Microscope, GraduationCap, Users, Sparkles, Mic } from "lucide-react";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 const items = [
@@ -33,12 +33,6 @@ const items = [
     title: "Judge — Annual Undergraduate Research Symposium",
     when: "2025 · Kent State University",
     body: "Evaluated undergraduate research presentations across chemistry, biology, and physics tracks.",
-  },
-  {
-    icon: Award, kind: "Conferences",
-    title: "Biophysical Society Annual Meetings · Rustbelt RNA · MSNO",
-    when: "2024 — Present · Philadelphia, Los Angeles, Ohio",
-    body: "Poster and talk presentations across national and regional venues from 2024 onward.",
   },
   {
     icon: Microscope, kind: "Research",

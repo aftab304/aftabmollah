@@ -14,6 +14,7 @@ export function AudienceSection() {
       <SectionHeader
         eyebrow="What I Bring"
         title={<>The short version, for anyone <span className="text-gradient italic">who wants it</span>.</>}
+        description="A concise account of the skills, experience, and scientific focus I bring to any research environment."
       />
       <motion.div
         initial={{ opacity: 0, y: 18 }}

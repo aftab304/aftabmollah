@@ -9,7 +9,6 @@ const sizeMap: Record<string, string> = {
   lg: "md:col-span-6 md:row-span-1",
 };
 
-
 export function UpdatesSection() {
   const ref = useVariantOnView<HTMLElement>("updates");
   return (
@@ -32,24 +31,24 @@ export function UpdatesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.04, duration: 0.5 }}
-              className={`${size} text-left glass rounded-2xl overflow-hidden relative transition-all flex flex-col`}
+              className={`${size} group text-left glass rounded-2xl overflow-hidden relative flex flex-col transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-glow`}
             >
-              <div className="relative h-32 w-full overflow-hidden">
+              <div className="relative w-full overflow-hidden" style={{ height: 180 }}>
                 {img ? (
                   <img
                     src={img}
                     alt=""
                     loading="lazy"
                     referrerPolicy="no-referrer"
-                    className="absolute inset-0 h-full w-full object-cover opacity-90"
+                    className="absolute inset-0 h-full w-full object-cover object-center opacity-60 transition-opacity duration-300 ease-out group-hover:opacity-100"
                   />
                 ) : (
                   <div className="absolute inset-0 grid place-items-center bg-muted/40 px-4 text-center text-xs text-muted-foreground">
                     {placeholder ?? "📷 Photo coming soon"}
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent pointer-events-none" />
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none transition-opacity duration-300 ease-out group-hover:opacity-60" />
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-xs z-10">
                   <span className="rounded-full bg-background/80 backdrop-blur px-2.5 py-1 text-[10px] uppercase tracking-wider text-foreground/80">
                     {u.tag}
                   </span>
@@ -69,4 +68,3 @@ export function UpdatesSection() {
     </section>
   );
 }
-

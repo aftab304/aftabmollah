@@ -1,8 +1,7 @@
 import { ThemeProvider } from "@/lib/theme";
-import { VariantProvider, useVariant, type SceneVariant } from "@/lib/variant";
+import { VariantProvider } from "@/lib/variant";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { MolecularCanvas } from "@/components/MolecularCanvas";
 import { HeroSection } from "@/routes/index";
 import { UpdatesSection } from "@/routes/updates";
 import { ExpertiseSection } from "@/routes/expertise";
@@ -13,13 +12,16 @@ import { PublicationsSection } from "@/routes/publications";
 import { ContactSection } from "@/routes/contact";
 import { AudienceSection } from "@/components/AudienceSection";
 
-function VariantBackground() {
-  const { variant } = useVariant();
-  const v: SceneVariant = (variant ?? "hero") as SceneVariant;
+function GradientBackground() {
   return (
-    <div className="fixed inset-0 -z-10 opacity-70 pointer-events-none transition-opacity duration-700">
-      <MolecularCanvas variant={v as "hero"} className="h-full w-full" />
-    </div>
+    <div
+      className="fixed inset-0 -z-10 pointer-events-none"
+      aria-hidden
+      style={{
+        background:
+          "radial-gradient(ellipse at 20% 15%, color-mix(in oklab, var(--azure) 28%, transparent), transparent 60%), radial-gradient(ellipse at 80% 80%, color-mix(in oklab, var(--cyan) 24%, transparent), transparent 60%)",
+      }}
+    />
   );
 }
 
@@ -28,7 +30,7 @@ export function App() {
     <ThemeProvider>
       <VariantProvider>
         <div className="relative min-h-screen bg-hero">
-          <VariantBackground />
+          <GradientBackground />
           <Nav />
           <main>
             <HeroSection />

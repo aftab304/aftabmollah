@@ -4,8 +4,8 @@ import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 const CH1 = "https://lh3.googleusercontent.com/d/1QFDauhhOoF4jfiYapewbb93wHVawU9BZ";
 const CH2 = "https://lh3.googleusercontent.com/d/1NQwir11zKPcvibfF38SDXEO-uAPXCSDE";
-const CH3 = "https://www.kent.edu/sites/default/files/styles/hero_image/public/2022-03/KSU_Campus_AerialMay2019_DSC5618-Edit.jpg";
-const CH3_ALT = "Kent State University campus";
+const CH3 = "https://lh3.googleusercontent.com/d/15PD-2yuKwgOtRvdMiqph8X6plSdUvVif";
+const CH4 = "https://lh3.googleusercontent.com/d/1hOhOP3ZShYQP28UhfeExA6odNQzAhMht";
 const CH6 = "https://lh3.googleusercontent.com/d/1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
 
 type Chapter = {
@@ -46,7 +46,6 @@ const chapters: Chapter[] = [
       "I left for the United States alone, carrying two suitcases and a fully funded PhD position at Kent State University. The first months were equal parts intimidation and exhilaration — a new country, a new lab, and a new way of working.",
     quote: "Curiosity is portable. Ambition is not optional.",
     image: CH3,
-    imageAlt: CH3_ALT,
   },
   {
     tag: "Research",
@@ -55,8 +54,7 @@ const chapters: Chapter[] = [
     body:
       "My doctoral work centers on RNA–protein interactions and m6A reader proteins — the molecules that decide which messages in our cells get read, and how. Biophysics gave me a way to ask thermodynamic questions about biology and actually answer them.",
     quote: "Every binding event is a tiny sentence in the language of life.",
-    image: null,
-    placeholder: "📷 Photo coming soon — Kent State research lab",
+    image: CH4,
   },
   {
     tag: "Mentorship",

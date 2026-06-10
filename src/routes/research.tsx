@@ -24,7 +24,7 @@ const themes = [
     matters: "Quantifying that balance is the first step toward engineering RNA-targeting therapeutics and diagnostic probes.",
     approach: "I combine systematic mutagenesis with quantitative biophysics — thermodynamic fingerprints reveal what binding really costs.",
     accent: "from-[var(--cyan)] to-[var(--azure)]",
-    pubIds: ["bps-philly-2024", "bps-la-2025"],
+    pubIds: [],
     image: abstractRecognition,
   },
   {
@@ -33,7 +33,7 @@ const themes = [
     matters: "Without rigorous thermodynamics and kinetics, mechanistic hypotheses remain just hypotheses.",
     approach: "ITC for thermodynamics, fluorescence for kinetics and conformational change, EMSA for selectivity — used together they form a complete picture.",
     accent: "from-[var(--azure)] to-[var(--cyan)]",
-    pubIds: ["rustbelt-rna"],
+    pubIds: [],
     image: abstractBiophysics,
   },
   {
@@ -42,7 +42,7 @@ const themes = [
     matters: "Bridging these scales lets us tie thermodynamic affinity to where and when binding happens in living systems.",
     approach: "Confocal fluorescence microscopy on labeled biomolecules connects in-cell observations with in vitro biophysics.",
     accent: "from-[var(--cyan)] to-[var(--azure)]",
-    pubIds: ["msno-2026"],
+    pubIds: [],
     image: abstractImaging,
   },
 ];
@@ -88,7 +88,6 @@ export function ResearchSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                     <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[9px] uppercase tracking-[0.2em]">
                       <span className="bg-background/80 backdrop-blur rounded-full px-2 py-1 text-foreground/80">Graphical abstract</span>
-                      <span className="bg-background/80 backdrop-blur rounded-full px-2 py-1 text-muted-foreground">Placeholder</span>
                     </div>
                   </div>
                 </div>
