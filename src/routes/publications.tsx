@@ -1,9 +1,131 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Search, ExternalLink, ChevronDown } from "lucide-react";
+import { Search, ExternalLink, ChevronDown, X } from "lucide-react";
 import { publications, type Publication } from "@/content/site";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
+
+const FEATURED_FIG = "https://lh3.googleusercontent.com/d/1em1kKrlUuGATZuRe00g7Cw_RA3F79wvB";
+const FEATURED_ITC = "https://lh3.googleusercontent.com/d/1gIqgbGJjNEOukpfGbO9qlsLm9bGk_5RP";
+const FEATURED_ABSTRACT = "https://lh3.googleusercontent.com/d/1wRfcaXLw7fHLm7_o2BPdEU7hNm7GIof9";
+
+function FeaturedPublication() {
+  const [lightbox, setLightbox] = useState(false);
+  return (
+    <>
+      <motion.article
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="relative glass rounded-3xl border-l-4 border-teal-500 p-6 md:p-8 overflow-hidden"
+      >
+        <span className="absolute top-4 right-4 rounded-full bg-teal-500/20 text-teal-700 dark:text-teal-300 px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-medium">
+          Featured
+        </span>
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-8 items-start">
+          <div>
+            <p className="text-xs uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400 font-medium">
+              First-Author · Peer-Reviewed
+            </p>
+            <h3 className="mt-3 font-display text-2xl md:text-3xl leading-snug text-balance">
+              Identification of Key Sequence Motifs Essential for the Recognition of m6A Modification in RNA
+            </h3>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Biomolecules, 16(1), 97 · MDPI · Published January 7, 2026 · DOI:{" "}
+              <a
+                href="https://doi.org/10.3390/biom16010097"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[var(--azure)] hover:underline"
+              >
+                10.3390/biom16010097
+              </a>
+            </p>
+            <p className="mt-5 text-foreground/90 leading-relaxed">
+              Using phage display screening, we identified the m1p1 peptide motif within the hnRNP A1 RRM
+              domain that selectively recognizes m6A within DRACH sequence contexts. This mechanistic
+              finding establishes a molecular basis for selective m6A reading — with direct implications
+              for RNA dysregulation in cancer and neurological disease.
+            </p>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Author contributions: Investigation · Experiment Design · Data Collection · Data Analysis
+              · Visualization · Methodology
+            </p>
+            <p className="mt-2 text-[11px] text-muted-foreground/80">
+              Aftab Mollah, Rushdhi Rauff, Sudeshi Abedeera, Chathurani Ekanayake, Chamali Thalagaha
+              Mudiyanselage, Minhchau To, Helen Piontkivska, Sanjaya Abeysirigunawardena
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="https://doi.org/10.3390/biom16010097"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-teal-500 text-white px-5 py-2.5 text-sm font-medium hover:bg-teal-600 transition-colors"
+              >
+                <ExternalLink className="h-4 w-4" /> Read Paper
+              </a>
+              <button
+                onClick={() => setLightbox(true)}
+                className="inline-flex items-center gap-2 rounded-full glass border border-border px-5 py-2.5 text-sm font-medium hover:shadow-glow"
+              >
+                View Graphical Abstract
+              </button>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="glass rounded-2xl p-2 overflow-hidden">
+              <img
+                src={FEATURED_FIG}
+                alt="Sequence motif figure"
+                referrerPolicy="no-referrer"
+                className="w-full h-auto rounded-xl object-contain bg-background/40"
+              />
+            </div>
+            <div className="glass rounded-2xl p-2 overflow-hidden">
+              <img
+                src={FEATURED_ITC}
+                alt="ITC binding thermogram"
+                referrerPolicy="no-referrer"
+                className="w-full h-auto rounded-xl object-contain bg-background/40"
+              />
+              <p className="text-center text-xs text-muted-foreground mt-2 mb-1">
+                ITC binding thermogram
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.article>
+
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightbox(false)}
+            className="fixed inset-0 z-50 bg-background/90 backdrop-blur-sm grid place-items-center p-6"
+          >
+            <button
+              onClick={() => setLightbox(false)}
+              className="absolute top-6 right-6 glass h-10 w-10 grid place-items-center rounded-full"
+              aria-label="Close"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <img
+              src={FEATURED_ABSTRACT}
+              alt="Graphical abstract"
+              referrerPolicy="no-referrer"
+              onClick={(e) => e.stopPropagation()}
+              className="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-glow"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
 
 const filters = [
   { id: "all", label: "All" },
@@ -81,7 +203,12 @@ export function PublicationsSection() {
         description="A modern archive of papers, posters, and talks."
       />
 
-      <div className="mt-12 glass rounded-2xl p-3 flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+      <div className="mt-12">
+        <FeaturedPublication />
+      </div>
+
+      <div className="mt-8 glass rounded-2xl p-3 flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input

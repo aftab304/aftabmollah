@@ -8,15 +8,15 @@ import {
 import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 const hero = [
-  { title: "Isothermal Titration Calorimetry", short: "ITC", desc: "Direct thermodynamic readout of binding — ΔH, ΔS, Kd, and stoichiometry in a single experiment.", anim: ITCAnim },
-  { title: "Fluorescence Spectroscopy", short: "Fluorescence", desc: "Steady-state and anisotropy measurements to probe RNA–protein interactions and conformational dynamics.", anim: FluorescenceAnim },
-  { title: "Confocal Fluorescence Microscopy", short: "Confocal", desc: "Z-stack imaging of fluorophore-labeled biomolecules in fixed and live cells.", anim: ConfocalAnim },
-  { title: "RNA–Protein Binding Assays", short: "RNA–Protein", desc: "EMSA, fluorescence binding, and competition assays to quantify specificity and selectivity.", anim: BindingAnim },
-  { title: "Human Cell Culture", short: "Cell Culture", desc: "Mammalian cell lines for expression, transfection, and live-cell imaging of RNA-protein complexes.", anim: CellCultureAnim },
-  { title: "Nanotechnology", short: "Nanotech", desc: "Functionalized nanoparticle synthesis and characterization for biological and diagnostic applications.", anim: NanotechAnim },
-  { title: "Protein Purification", short: "Purification", desc: "Affinity, ion-exchange, and size-exclusion chromatography for biophysics-grade samples.", anim: PurificationAnim },
-  { title: "Molecular Cloning", short: "Cloning", desc: "Mutagenesis, Gibson assembly, and expression vector design for RNA-binding protein constructs.", anim: CloningAnim },
-  { title: "EMSA & Western Blot", short: "EMSA", desc: "Native gel-shift assays and immunoblotting to verify binding and protein expression.", anim: GelAnim },
+  { title: "Isothermal Titration Calorimetry", short: "ITC", desc: "Used to measure binding thermodynamics of m6A reader protein interactions — providing ΔH, ΔS, and Kd values to support and validate phage display and pull-down assay data.", anim: ITCAnim },
+  { title: "Fluorescence Spectroscopy", short: "Fluorescence", desc: "Applied during Master's research to image fluorescent carbon nanoparticles inside cancer cells, demonstrating selective drug uptake — and used at Kent State to probe RNA-protein binding interactions.", anim: FluorescenceAnim },
+  { title: "Confocal Fluorescence Microscopy", short: "Confocal", desc: "Applied to visualize fluorophore-labeled biomolecules and RNA-protein complexes in fixed and live cell systems.", anim: ConfocalAnim },
+  { title: "RNA–Protein Binding Assays", short: "RNA–Protein", desc: "EMSA, fluorescence binding, and competition assays to quantify specificity and selectivity. Applied in the context of m6A reader protein characterization.", anim: BindingAnim },
+  { title: "Human Cell Culture", short: "Cell Culture", desc: "Mammalian cell lines for expression, transfection, and live-cell imaging of RNA-protein complexes. Applied in the context of m6A reader protein characterization.", anim: CellCultureAnim },
+  { title: "Nanotechnology", short: "Nanotech", desc: "Functionalized nanoparticle synthesis and characterization for biological and diagnostic applications. Applied in the context of m6A reader protein characterization.", anim: NanotechAnim },
+  { title: "Protein Purification", short: "Purification", desc: "Affinity, ion-exchange, and size-exclusion chromatography for biophysics-grade samples. Applied in the context of m6A reader protein characterization.", anim: PurificationAnim },
+  { title: "Molecular Cloning", short: "Cloning", desc: "Mutagenesis, Gibson assembly, and expression vector design for RNA-binding protein constructs. Applied in the context of m6A reader protein characterization.", anim: CloningAnim },
+  { title: "EMSA & Western Blot", short: "EMSA", desc: "Used to confirm and characterize RNA-protein binding across 10+ RNA constructs, establishing specificity of m6A reader protein recognition.", anim: GelAnim },
 ];
 
 const more = [

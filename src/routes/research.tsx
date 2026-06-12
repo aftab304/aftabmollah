@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, FlaskConical } from "lucide-react";
 import { publications } from "@/content/site";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
 import abstractM6a from "@/assets/research/abstract-m6a.jpg";
@@ -14,6 +14,7 @@ const themes = [
     problem: "N6-methyladenosine (m6A) is the most abundant internal mRNA modification, yet how reader proteins selectively recognize it within DRACH motifs is still being decoded.",
     matters: "Reader recognition controls mRNA stability, localization, and translation — directly tied to development, cancer, and immune responses.",
     approach: "I identify and characterize candidate readers like hnRNP A1 using ITC, fluorescence binding assays, and structural biology.",
+    relevance: "Disease relevance: m6A dysregulation is implicated in AML, glioblastoma, and neurological disorders — our work identifies the molecular basis of selective recognition.",
     accent: "from-[var(--azure)] to-[var(--cyan)]",
     pubIds: ["m6a-motifs-2025", "m6a-biophysj-2024"],
     image: abstractM6a,
@@ -23,6 +24,7 @@ const themes = [
     problem: "Specificity in RNA–protein interactions emerges from a subtle balance of shape, charge, and sequence context.",
     matters: "Quantifying that balance is the first step toward engineering RNA-targeting therapeutics and diagnostic probes.",
     approach: "I combine systematic mutagenesis with quantitative biophysics — thermodynamic fingerprints reveal what binding really costs.",
+    relevance: "Disease relevance: Disrupted RNA-protein recognition underlies aberrant splicing and translation in cancer and CNS disease.",
     accent: "from-[var(--cyan)] to-[var(--azure)]",
     pubIds: [],
     image: abstractRecognition,
@@ -32,6 +34,7 @@ const themes = [
     problem: "Many candidate RNA-binding proteins lack a quantitative description of their binding modes.",
     matters: "Without rigorous thermodynamics and kinetics, mechanistic hypotheses remain just hypotheses.",
     approach: "ITC for thermodynamics, fluorescence for kinetics and conformational change, EMSA for selectivity — used together they form a complete picture.",
+    relevance: "Disease relevance: Quantifying binding thermodynamics provides the mechanistic foundation for RNA-targeted drug discovery.",
     accent: "from-[var(--azure)] to-[var(--cyan)]",
     pubIds: [],
     image: abstractBiophysics,
@@ -41,6 +44,7 @@ const themes = [
     problem: "Bulk biophysics misses cellular context; imaging misses molecular detail.",
     matters: "Bridging these scales lets us tie thermodynamic affinity to where and when binding happens in living systems.",
     approach: "Confocal fluorescence microscopy on labeled biomolecules connects in-cell observations with in vitro biophysics.",
+    relevance: "Disease relevance: Cell-based imaging of RNA-protein co-localization supports target engagement studies relevant to therapeutic development.",
     accent: "from-[var(--cyan)] to-[var(--azure)]",
     pubIds: [],
     image: abstractImaging,
@@ -110,6 +114,10 @@ export function ResearchSection() {
                   <div>
                     <p className="text-xs uppercase tracking-[0.18em] text-[var(--azure)]">My approach</p>
                     <p className="mt-1.5 text-muted-foreground leading-relaxed">{t.approach}</p>
+                  </div>
+                  <div className="flex items-start gap-2 rounded-xl border-l-2 border-teal-500 bg-teal-500/5 px-3 py-2">
+                    <FlaskConical className="h-4 w-4 mt-0.5 text-teal-500 shrink-0" />
+                    <p className="text-sm text-foreground/85 leading-relaxed">{t.relevance}</p>
                   </div>
                   {t.pubIds.length > 0 && (
                     <div className="pt-1">
