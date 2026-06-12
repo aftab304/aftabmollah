@@ -203,7 +203,12 @@ export function PublicationsSection() {
         description="A modern archive of papers, posters, and talks."
       />
 
-      <div className="mt-12 glass rounded-2xl p-3 flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+      <div className="mt-12">
+        <FeaturedPublication />
+      </div>
+
+      <div className="mt-8 glass rounded-2xl p-3 flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
