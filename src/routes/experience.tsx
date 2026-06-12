@@ -38,7 +38,7 @@ const items = [
     icon: Microscope, kind: "Research",
     title: "Master's Researcher — IIT Patna",
     when: "2020 — 2022 · Indian Institute of Technology Patna",
-    body: "Awarded Best Master's Project by the Department of Chemistry for thesis work in physical chemistry.",
+    body: "Synthesized and characterized a hydrophobic nanoparticle conjugate with a natural porous material engineered for oil spill cleanup — combining nanomaterial design with environmental application. Awarded Best Master's Project by the Department of Chemistry, IIT Patna.",
   },
 ];
 
