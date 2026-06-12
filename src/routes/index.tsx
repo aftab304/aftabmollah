@@ -54,14 +54,27 @@ export function HeroSection() {
             Decoding the <span className="text-gradient italic">hidden language</span> between RNA and proteins.
           </motion.h1>
 
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.12 }}
+            className="mt-6 max-w-xl glass rounded-2xl border-l-4 border-teal-500 bg-background/40 dark:bg-background/30 p-5"
+          >
+            <p className="font-display text-lg md:text-xl leading-snug text-foreground">
+              We identified the m1p1 peptide motif within the hnRNP A1 RRM domain that selectively recognizes m6A within DRACH sequence contexts.
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              This finding has direct implications for understanding RNA dysregulation in cancer and neurological disease.
+            </p>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.18 }}
             className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            Biophysics, molecular biology, and biomolecular recognition — translating the
-            thermodynamics of m6A reader proteins into a clearer picture of life at the molecular scale.
+            My research sits at the intersection of RNA biology and biophysics — using isothermal titration calorimetry, fluorescence spectroscopy, and EMSA to characterize how proteins recognize chemically modified RNA. The work is mechanistically grounded and directly relevant to RNA dysregulation in cancer and neurological disease.
           </motion.p>
 
           <motion.div
@@ -85,7 +98,7 @@ export function HeroSection() {
           >
             <span className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 dark:bg-teal-500/15 text-teal-800 dark:text-teal-300 px-3 py-1 text-xs font-medium">
               <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400" />
-              Seeking postdoctoral &amp; industry R&amp;D positions · Available from June 2027
+              Seeking postdoctoral &amp; industry R&amp;D positions · Expected graduation June 2027 · Available from Summer 2027
             </span>
           </motion.div>
 
