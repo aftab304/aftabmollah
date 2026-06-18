@@ -10,12 +10,7 @@ type Variant =
   | "publications"
   | "contact";
 
-export function MolecularCanvas({
-  className = "",
-}: {
-  variant?: Variant;
-  className?: string;
-}) {
+export function MolecularCanvas({ className = "" }: { variant?: Variant; className?: string }) {
   return (
     <div
       className={`pointer-events-none ${className}`}

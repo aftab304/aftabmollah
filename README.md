@@ -63,7 +63,7 @@ public/
 
 ## SEO
 
-- Per-route `head()` metadata (title, description, og:*) in every route file.
+- Per-route `head()` metadata (title, description, og:\*) in every route file.
 - JSON-LD `Person` schema in `__root.tsx`.
 - `public/robots.txt` allows all crawlers and references the sitemap.
 - `/sitemap.xml` served by a TanStack server route, lists every public route.
@@ -85,13 +85,13 @@ Update `BASE_URL` in `src/routes/sitemap[.]xml.ts` and the `Sitemap:` line in `p
 
 ## Scripts
 
-| Command           | Description                              |
-|-------------------|------------------------------------------|
-| `npm run dev`     | Vite dev server (HMR + SSR)              |
-| `npm run build`   | Production build                         |
-| `npm run preview` | Serve the built app locally              |
-| `npm run lint`    | ESLint                                   |
-| `npm run format`  | Prettier write                           |
+| Command           | Description                 |
+| ----------------- | --------------------------- |
+| `npm run dev`     | Vite dev server (HMR + SSR) |
+| `npm run build`   | Production build            |
+| `npm run preview` | Serve the built app locally |
+| `npm run lint`    | ESLint                      |
+| `npm run format`  | Prettier write              |
 
 ## Post-deployment checklist
 
