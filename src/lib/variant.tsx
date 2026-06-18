@@ -1,8 +1,14 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 
 export type SceneVariant =
-  | "hero" | "updates" | "expertise" | "story"
-  | "research" | "experience" | "publications" | "contact";
+  | "hero"
+  | "updates"
+  | "expertise"
+  | "story"
+  | "research"
+  | "experience"
+  | "publications"
+  | "contact";
 
 type Ctx = { variant: SceneVariant | null; setVariant: (v: SceneVariant) => void };
 const VariantCtx = createContext<Ctx>({ variant: null, setVariant: () => {} });

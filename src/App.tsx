@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/lib/theme";
 import { VariantProvider } from "@/lib/variant";
 import { Nav } from "@/components/Nav";
@@ -44,6 +45,7 @@ export function App() {
             <ContactSection />
           </main>
           <Footer />
+          <Analytics />
         </div>
       </VariantProvider>
     </ThemeProvider>

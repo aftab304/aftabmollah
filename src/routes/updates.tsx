@@ -15,7 +15,11 @@ export function UpdatesSection() {
     <section id="updates" ref={ref} className="mx-auto max-w-7xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="Notice Board"
-        title={<>Recent <span className="text-gradient italic">updates</span>.</>}
+        title={
+          <>
+            Recent <span className="text-gradient italic">updates</span>.
+          </>
+        }
         description="A scientific newsroom — awards, papers, talks, and the people I'm proud to mentor."
       />
 
@@ -52,7 +56,9 @@ export function UpdatesSection() {
                   <span className="rounded-full bg-background/80 backdrop-blur px-2.5 py-1 text-[10px] uppercase tracking-wider text-foreground/80">
                     {u.tag}
                   </span>
-                  <span className="font-display text-[var(--azure)] bg-background/80 backdrop-blur rounded-full px-2.5 py-0.5">{u.year}</span>
+                  <span className="font-display text-[var(--azure)] bg-background/80 backdrop-blur rounded-full px-2.5 py-0.5">
+                    {u.year}
+                  </span>
                 </div>
               </div>
               <div className="p-5 flex-1 flex flex-col">

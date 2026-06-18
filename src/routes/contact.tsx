@@ -32,7 +32,11 @@ export function ContactSection() {
     <section id="contact" ref={ref} className="mx-auto max-w-6xl px-6 pt-8 pb-20 scroll-mt-24">
       <SectionHeader
         eyebrow="Contact"
-        title={<>Let's <span className="text-gradient italic">collaborate</span>.</>}
+        title={
+          <>
+            Let's <span className="text-gradient italic">collaborate</span>.
+          </>
+        }
         description="Postdoctoral positions, industry roles, scientific collaborations, mentorship, talks — happy to hear from you."
       />
 
@@ -44,7 +48,9 @@ export function ContactSection() {
           className="glass rounded-3xl p-7 md:p-9"
         >
           <p className="font-display text-2xl">Send a message</p>
-          <p className="mt-1 text-sm text-muted-foreground">Submissions are emailed directly — no app required.</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Submissions are emailed directly — no app required.
+          </p>
 
           {status === "sent" ? (
             <div className="mt-8 rounded-2xl border border-teal-500/30 bg-teal-500/10 p-6 text-center">
@@ -54,33 +60,47 @@ export function ContactSection() {
           ) : (
             <form onSubmit={onSubmit} className="mt-6 grid gap-4">
               <label className="grid gap-1.5">
-                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Name</span>
+                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Name
+                </span>
                 <input
-                  required value={form.name}
+                  required
+                  value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   className="rounded-xl border border-border bg-background/40 px-4 py-3 text-sm outline-none focus:border-[var(--azure)]"
                 />
               </label>
               <label className="grid gap-1.5">
-                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Email</span>
+                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Email
+                </span>
                 <input
-                  required type="email" value={form.email}
+                  required
+                  type="email"
+                  value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="rounded-xl border border-border bg-background/40 px-4 py-3 text-sm outline-none focus:border-[var(--azure)]"
                 />
               </label>
               <label className="grid gap-1.5">
-                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Subject</span>
+                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Subject
+                </span>
                 <input
-                  required value={form.subject}
+                  required
+                  value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
                   className="rounded-xl border border-border bg-background/40 px-4 py-3 text-sm outline-none focus:border-[var(--azure)]"
                 />
               </label>
               <label className="grid gap-1.5">
-                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Message</span>
+                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Message
+                </span>
                 <textarea
-                  required rows={5} value={form.message}
+                  required
+                  rows={5}
+                  value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="rounded-xl border border-border bg-background/40 px-4 py-3 text-sm outline-none focus:border-[var(--azure)] resize-none"
                 />
@@ -98,7 +118,9 @@ export function ContactSection() {
                   <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
                   <span>
                     Something went wrong. Please email me directly at{" "}
-                    <a className="underline" href={`mailto:${email}`}>{email}</a>
+                    <a className="underline" href={`mailto:${email}`}>
+                      {email}
+                    </a>
                   </span>
                 </div>
               )}
@@ -113,7 +135,10 @@ export function ContactSection() {
           transition={{ delay: 0.05 }}
           className="grid gap-4 content-start"
         >
-          <a href={`mailto:${email}`} className="glass rounded-2xl p-5 flex items-center gap-4 hover:shadow-glow transition-all">
+          <a
+            href={`mailto:${email}`}
+            className="glass rounded-2xl p-5 flex items-center gap-4 hover:shadow-glow transition-all"
+          >
             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[var(--azure)]/30 to-[var(--cyan)]/30 grid place-items-center">
               <Mail className="h-4 w-4" />
             </div>
@@ -123,20 +148,47 @@ export function ContactSection() {
             </div>
           </a>
           {[
-            { href: linkedinUrl, icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/aftabmollah" },
-            { href: scholarUrl, icon: GraduationCap, label: "Google Scholar", value: "scholar.google.com" },
-            { href: researchgateUrl, icon: BookOpen, label: "ResearchGate", value: "researchgate.net" },
-            { href: orcidUrl, icon: BookOpen, label: "ORCID", value: "orcid.org/0009-0006-8601-5984" },
+            {
+              href: linkedinUrl,
+              icon: Linkedin,
+              label: "LinkedIn",
+              value: "linkedin.com/in/aftabmollah",
+            },
+            {
+              href: scholarUrl,
+              icon: GraduationCap,
+              label: "Google Scholar",
+              value: "scholar.google.com",
+            },
+            {
+              href: researchgateUrl,
+              icon: BookOpen,
+              label: "ResearchGate",
+              value: "researchgate.net",
+            },
+            {
+              href: orcidUrl,
+              icon: BookOpen,
+              label: "ORCID",
+              value: "orcid.org/0009-0006-8601-5984",
+            },
           ].map((it) => {
             const Icon = it.icon;
             return (
-              <a key={it.label} href={it.href} target="_blank" rel="noreferrer"
-                 className="glass rounded-2xl p-5 flex items-center gap-4 hover:shadow-glow transition-all">
+              <a
+                key={it.label}
+                href={it.href}
+                target="_blank"
+                rel="noreferrer"
+                className="glass rounded-2xl p-5 flex items-center gap-4 hover:shadow-glow transition-all"
+              >
                 <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[var(--azure)]/30 to-[var(--cyan)]/30 grid place-items-center">
                   <Icon className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{it.label}</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    {it.label}
+                  </p>
                   <p className="font-medium">{it.value}</p>
                 </div>
               </a>
@@ -152,9 +204,12 @@ export function ContactSection() {
         className="mt-16 glass rounded-3xl p-10 text-center relative overflow-hidden"
       >
         <div className="absolute -top-20 left-1/2 -translate-x-1/2 h-60 w-[36rem] rounded-full bg-gradient-to-br from-[var(--azure)]/30 to-[var(--cyan)]/30 blur-3xl pointer-events-none" />
-        <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Scientific vision</p>
+        <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+          Scientific vision
+        </p>
         <p className="mt-4 font-display text-3xl md:text-5xl italic leading-snug text-balance max-w-3xl mx-auto">
-          "Driven by curiosity, guided by molecular interactions, and inspired by the endless complexity of life."
+          "Driven by curiosity, guided by molecular interactions, and inspired by the endless
+          complexity of life."
         </p>
       </motion.div>
     </section>

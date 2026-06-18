@@ -17,7 +17,7 @@ export function useVariantOnView<T extends HTMLElement>(variant: SceneVariant) {
           }
         }
       },
-      { threshold: [0.35, 0.6], rootMargin: "-20% 0px -20% 0px" }
+      { threshold: [0.35, 0.6], rootMargin: "-20% 0px -20% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();

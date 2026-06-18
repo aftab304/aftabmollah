@@ -3,23 +3,31 @@ import { useEffect, useRef } from "react";
 export function ITCAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     const loop = () => {
       t += 0.012;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.clearRect(0, 0, w, h);
       ctx.strokeStyle = "rgba(120,150,200,0.35)";
       ctx.lineWidth = dpr;
       // axes
       ctx.beginPath();
-      ctx.moveTo(20 * dpr, h - 20 * dpr); ctx.lineTo(w - 10 * dpr, h - 20 * dpr);
-      ctx.moveTo(20 * dpr, 10 * dpr); ctx.lineTo(20 * dpr, h - 20 * dpr);
+      ctx.moveTo(20 * dpr, h - 20 * dpr);
+      ctx.lineTo(w - 10 * dpr, h - 20 * dpr);
+      ctx.moveTo(20 * dpr, 10 * dpr);
+      ctx.lineTo(20 * dpr, h - 20 * dpr);
       ctx.stroke();
       // injection peaks (downward heat pulses)
       const grad = ctx.createLinearGradient(0, 0, w, 0);
@@ -44,7 +52,10 @@ export function ITCAnim() {
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -52,23 +63,29 @@ export function ITCAnim() {
 export function FluorescenceAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     const loop = () => {
       t += 0.02;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.clearRect(0, 0, w, h);
       // gaussian emission spectra at multiple wavelengths
       const cols = ["#3b6fd8", "#1aa7c2", "#7a5cff"];
       cols.forEach((col, idx) => {
         const center = w * (0.3 + idx * 0.2);
         const sigma = w * 0.07;
-        const amp = (h * 0.65) * (0.6 + 0.4 * Math.sin(t * 1.5 + idx));
+        const amp = h * 0.65 * (0.6 + 0.4 * Math.sin(t * 1.5 + idx));
         const grad = ctx.createLinearGradient(0, h - amp, 0, h);
         grad.addColorStop(0, col);
         grad.addColorStop(1, col + "00");
@@ -88,7 +105,10 @@ export function FluorescenceAnim() {
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -96,33 +116,45 @@ export function FluorescenceAnim() {
 export function ConfocalAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     // cells
     const cells = Array.from({ length: 14 }).map(() => ({
-      x: Math.random(), y: Math.random(),
-      r: 0.05 + Math.random() * 0.08, phase: Math.random() * Math.PI * 2,
+      x: Math.random(),
+      y: Math.random(),
+      r: 0.05 + Math.random() * 0.08,
+      phase: Math.random() * Math.PI * 2,
     }));
     const loop = () => {
       t += 0.012;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.fillStyle = "rgba(15,30,60,0.05)";
       ctx.fillRect(0, 0, w, h);
       ctx.clearRect(0, 0, w, h);
-      cells.forEach(cell => {
+      cells.forEach((cell) => {
         const pulse = 0.6 + 0.4 * Math.sin(t * 2 + cell.phase);
-        const x = cell.x * w, y = cell.y * h, r = cell.r * Math.min(w, h);
+        const x = cell.x * w,
+          y = cell.y * h,
+          r = cell.r * Math.min(w, h);
         const grad = ctx.createRadialGradient(x, y, r * 0.2, x, y, r);
         grad.addColorStop(0, `rgba(122,180,255,${0.85 * pulse})`);
         grad.addColorStop(0.5, `rgba(26,167,194,${0.4 * pulse})`);
         grad.addColorStop(1, "rgba(26,167,194,0)");
         ctx.fillStyle = grad;
-        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
       });
       // scan line
       const scanY = ((t * 0.3) % 1) * h;
@@ -135,7 +167,10 @@ export function ConfocalAnim() {
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -143,18 +178,25 @@ export function ConfocalAnim() {
 export function BindingAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     const loop = () => {
       t += 0.015;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.clearRect(0, 0, w, h);
-      const cx = w / 2, cy = h / 2;
+      const cx = w / 2,
+        cy = h / 2;
       // protein blob
       ctx.fillStyle = "rgba(59,111,216,0.45)";
       ctx.beginPath();
@@ -164,7 +206,8 @@ export function BindingAnim() {
         const y = cy + Math.sin(a) * r;
         a === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
-      ctx.closePath(); ctx.fill();
+      ctx.closePath();
+      ctx.fill();
       // RNA strand approaching/binding
       ctx.strokeStyle = "rgba(26,167,194,0.85)";
       ctx.lineWidth = 2 * dpr;
@@ -182,12 +225,17 @@ export function BindingAnim() {
         const x = startX + i * 10 * dpr;
         const y = cy + Math.sin(i * 0.5 + t * 3) * 14 * dpr * (1 - phase * 0.5);
         ctx.fillStyle = "rgba(122,92,255,0.8)";
-        ctx.beginPath(); ctx.arc(x, y, 3 * dpr, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x, y, 3 * dpr, 0, Math.PI * 2);
+        ctx.fill();
       }
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -195,11 +243,16 @@ export function BindingAnim() {
 export function PurificationAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     type P = { x: number; y: number; vy: number; col: string; r: number };
@@ -207,10 +260,12 @@ export function PurificationAnim() {
     const colors = ["#3b6fd8", "#1aa7c2", "#7a5cff", "#3b6fd8", "#1aa7c2"];
     const loop = () => {
       t += 0.016;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.clearRect(0, 0, w, h);
       // column
-      const colX = w / 2 - 30 * dpr, colW = 60 * dpr;
+      const colX = w / 2 - 30 * dpr,
+        colW = 60 * dpr;
       ctx.fillStyle = "rgba(180,200,230,0.18)";
       ctx.fillRect(colX, 10 * dpr, colW, h - 20 * dpr);
       ctx.strokeStyle = "rgba(120,150,200,0.4)";
@@ -225,18 +280,23 @@ export function PurificationAnim() {
           r: (2 + Math.random() * 2) * dpr,
         });
       }
-      parts.forEach(p => {
+      parts.forEach((p) => {
         p.y += p.vy * dpr;
         ctx.fillStyle = p.col;
         ctx.globalAlpha = 0.85;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
       });
       ctx.globalAlpha = 1;
-      parts = parts.filter(p => p.y < h - 10 * dpr);
+      parts = parts.filter((p) => p.y < h - 10 * dpr);
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -244,34 +304,51 @@ export function PurificationAnim() {
 export function CloningAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     const loop = () => {
       t += 0.012;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.clearRect(0, 0, w, h);
-      const cx = w / 2, cy = h / 2;
+      const cx = w / 2,
+        cy = h / 2;
       const R = Math.min(w, h) * 0.32;
       // plasmid ring
       ctx.strokeStyle = "rgba(59,111,216,0.7)";
       ctx.lineWidth = 3 * dpr;
-      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.stroke();
       // double strand effect
       ctx.strokeStyle = "rgba(26,167,194,0.5)";
       ctx.lineWidth = 1.5 * dpr;
-      ctx.beginPath(); ctx.arc(cx, cy, R + 4 * dpr, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, R + 4 * dpr, 0, Math.PI * 2);
+      ctx.stroke();
       // insert traveling around
       const a = t * 0.8;
-      const ix = cx + Math.cos(a) * R, iy = cy + Math.sin(a) * R;
+      const ix = cx + Math.cos(a) * R,
+        iy = cy + Math.sin(a) * R;
       ctx.fillStyle = "#7a5cff";
-      ctx.beginPath(); ctx.arc(ix, iy, 7 * dpr, 0, Math.PI * 2); ctx.fill();
-      ctx.shadowColor = "#7a5cff"; ctx.shadowBlur = 18 * dpr;
-      ctx.beginPath(); ctx.arc(ix, iy, 7 * dpr, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath();
+      ctx.arc(ix, iy, 7 * dpr, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowColor = "#7a5cff";
+      ctx.shadowBlur = 18 * dpr;
+      ctx.beginPath();
+      ctx.arc(ix, iy, 7 * dpr, 0, Math.PI * 2);
+      ctx.fill();
       ctx.shadowBlur = 0;
       // tick marks
       for (let i = 0; i < 16; i++) {
@@ -282,12 +359,18 @@ export function CloningAnim() {
         const y2 = cy + Math.sin(ang) * (R + 6 * dpr);
         ctx.strokeStyle = "rgba(120,150,200,0.4)";
         ctx.lineWidth = 1 * dpr;
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
       }
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -295,16 +378,22 @@ export function CloningAnim() {
 export function GelAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     const loop = () => {
       t += 0.01;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.fillStyle = "rgba(20,40,80,0.04)";
       ctx.fillRect(0, 0, w, h);
       ctx.clearRect(0, 0, w, h);
@@ -331,7 +420,10 @@ export function GelAnim() {
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -339,21 +431,30 @@ export function GelAnim() {
 export function CellCultureAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     type Cell = { x: number; y: number; r: number; phase: number; divide: number };
     let cells: Cell[] = Array.from({ length: 9 }).map(() => ({
-      x: Math.random(), y: Math.random(), r: 0.06 + Math.random() * 0.05,
-      phase: Math.random() * Math.PI * 2, divide: Math.random() * 6,
+      x: Math.random(),
+      y: Math.random(),
+      r: 0.06 + Math.random() * 0.05,
+      phase: Math.random() * Math.PI * 2,
+      divide: Math.random() * 6,
     }));
     const loop = () => {
       t += 0.012;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.clearRect(0, 0, w, h);
       // dish rim
       ctx.strokeStyle = "rgba(120,150,200,0.25)";
@@ -364,17 +465,29 @@ export function CellCultureAnim() {
       cells.forEach((cell) => {
         cell.divide -= 0.012;
         const pulse = 0.85 + 0.15 * Math.sin(t * 1.5 + cell.phase);
-        const x = cell.x * w, y = cell.y * h, r = cell.r * Math.min(w, h) * pulse;
+        const x = cell.x * w,
+          y = cell.y * h,
+          r = cell.r * Math.min(w, h) * pulse;
         // membrane
         const grad = ctx.createRadialGradient(x, y, r * 0.2, x, y, r);
         grad.addColorStop(0, "rgba(180,220,255,0.9)");
         grad.addColorStop(0.6, "rgba(59,111,216,0.45)");
         grad.addColorStop(1, "rgba(26,167,194,0)");
         ctx.fillStyle = grad;
-        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
         // nucleus
         ctx.fillStyle = "rgba(122,92,255,0.85)";
-        ctx.beginPath(); ctx.arc(x + Math.sin(t + cell.phase) * r * 0.15, y + Math.cos(t + cell.phase) * r * 0.15, r * 0.3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(
+          x + Math.sin(t + cell.phase) * r * 0.15,
+          y + Math.cos(t + cell.phase) * r * 0.15,
+          r * 0.3,
+          0,
+          Math.PI * 2,
+        );
+        ctx.fill();
       });
       // mitosis: cells with divide<=0 split
       const next: Cell[] = [];
@@ -382,7 +495,13 @@ export function CellCultureAnim() {
         if (cell.divide <= 0 && cells.length + next.length < 18) {
           const angle = Math.random() * Math.PI * 2;
           const d = cell.r * 1.2;
-          next.push({ x: cell.x + Math.cos(angle) * d * 0.5, y: cell.y + Math.sin(angle) * d * 0.5, r: cell.r * 0.85, phase: Math.random() * 6, divide: 6 + Math.random() * 6 });
+          next.push({
+            x: cell.x + Math.cos(angle) * d * 0.5,
+            y: cell.y + Math.sin(angle) * d * 0.5,
+            r: cell.r * 0.85,
+            phase: Math.random() * 6,
+            divide: 6 + Math.random() * 6,
+          });
           cell.x -= Math.cos(angle) * d * 0.3;
           cell.y -= Math.sin(angle) * d * 0.3;
           cell.r *= 0.85;
@@ -394,7 +513,10 @@ export function CellCultureAnim() {
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }
@@ -402,16 +524,22 @@ export function CellCultureAnim() {
 export function NanotechAnim() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const c = ref.current; if (!c) return;
+    const c = ref.current;
+    if (!c) return;
     const ctx = c.getContext("2d")!;
-    let raf = 0; let t = 0;
+    let raf = 0;
+    let t = 0;
     const dpr = window.devicePixelRatio || 1;
-    const resize = () => { c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr; };
+    const resize = () => {
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
+    };
     resize();
     window.addEventListener("resize", resize);
     const loop = () => {
       t += 0.014;
-      const w = c.width, h = c.height;
+      const w = c.width,
+        h = c.height;
       ctx.clearRect(0, 0, w, h);
       // hex lattice
       const s = 22 * dpr;
@@ -422,7 +550,7 @@ export function NanotechAnim() {
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           const x = i * s * 1.5;
-          const y = j * s * Math.sqrt(3) + (i % 2) * (s * Math.sqrt(3) / 2);
+          const y = j * s * Math.sqrt(3) + (i % 2) * ((s * Math.sqrt(3)) / 2);
           ctx.beginPath();
           for (let k = 0; k < 6; k++) {
             const a = (k / 6) * Math.PI * 2;
@@ -442,7 +570,9 @@ export function NanotechAnim() {
         grad.addColorStop(0, "rgba(180,220,255,0.95)");
         grad.addColorStop(1, "rgba(26,167,194,0)");
         ctx.fillStyle = grad;
-        ctx.beginPath(); ctx.arc(x, y, 16 * dpr, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x, y, 16 * dpr, 0, Math.PI * 2);
+        ctx.fill();
       }
       // nanoparticles
       const np = 5;
@@ -456,14 +586,20 @@ export function NanotechAnim() {
         grad.addColorStop(0.4, "rgba(122,92,255,0.85)");
         grad.addColorStop(1, "rgba(59,111,216,0.1)");
         ctx.fillStyle = grad;
-        ctx.shadowColor = "rgba(122,92,255,0.6)"; ctx.shadowBlur = 16 * dpr;
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowColor = "rgba(122,92,255,0.6)";
+        ctx.shadowBlur = 16 * dpr;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fill();
         ctx.shadowBlur = 0;
       }
       raf = requestAnimationFrame(loop);
     };
     loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="w-full h-full" />;
 }

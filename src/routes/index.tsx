@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Linkedin, Mail, GraduationCap, BookOpen, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Download,
+  Linkedin,
+  Mail,
+  GraduationCap,
+  BookOpen,
+  Sparkles,
+} from "lucide-react";
 import {
   portraitUrl,
   portraitAlt,
@@ -23,7 +31,10 @@ const tags = [
 
 function RGIcon({ className = "" }: { className?: string }) {
   return (
-    <span className={`font-display text-[10px] font-semibold tracking-tight ${className}`} aria-hidden>
+    <span
+      className={`font-display text-[10px] font-semibold tracking-tight ${className}`}
+      aria-hidden
+    >
       RG
     </span>
   );
@@ -51,7 +62,8 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.05 }}
             className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.02] text-balance"
           >
-            Decoding the <span className="text-gradient italic">hidden language</span> between RNA and proteins.
+            Decoding the <span className="text-gradient italic">hidden language</span> between RNA
+            and proteins.
           </motion.h1>
 
           <motion.div
@@ -61,10 +73,12 @@ export function HeroSection() {
             className="mt-6 max-w-xl glass rounded-2xl border-l-4 border-teal-500 bg-background/40 dark:bg-background/30 p-5"
           >
             <p className="font-display text-lg md:text-xl leading-snug text-foreground">
-              We identified the m1p1 peptide motif within the hnRNP A1 RRM domain that selectively recognizes m6A within DRACH sequence contexts.
+              We identified the m1p1 peptide motif within the hnRNP A1 RRM domain that selectively
+              recognizes m6A within DRACH sequence contexts.
             </p>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              This finding has direct implications for understanding RNA dysregulation in cancer and neurological disease.
+              This finding has direct implications for understanding RNA dysregulation in cancer and
+              neurological disease.
             </p>
           </motion.div>
 
@@ -74,7 +88,10 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.18 }}
             className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            My research sits at the intersection of RNA biology and biophysics — using isothermal titration calorimetry, fluorescence spectroscopy, and EMSA to characterize how proteins recognize chemically modified RNA. The work is mechanistically grounded and directly relevant to RNA dysregulation in cancer and neurological disease.
+            My research sits at the intersection of RNA biology and biophysics — using isothermal
+            titration calorimetry, fluorescence spectroscopy, and EMSA to characterize how proteins
+            recognize chemically modified RNA. The work is mechanistically grounded and directly
+            relevant to RNA dysregulation in cancer and neurological disease.
           </motion.p>
 
           <motion.div
@@ -98,7 +115,8 @@ export function HeroSection() {
           >
             <span className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 dark:bg-teal-500/15 text-teal-800 dark:text-teal-300 px-3 py-1 text-xs font-medium">
               <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400" />
-              Seeking postdoctoral &amp; industry R&amp;D positions · Expected graduation June 2027 · Available from Summer 2027
+              Seeking postdoctoral &amp; industry R&amp;D positions · Expected graduation June 2027
+              · Available from Summer 2027
             </span>
           </motion.div>
 
@@ -171,7 +189,9 @@ export function HeroSection() {
                 alt={portraitAlt}
                 className="h-full w-full object-cover"
                 referrerPolicy="no-referrer"
-                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 glass rounded-2xl p-3 text-xs">
@@ -213,9 +233,21 @@ export function HeroSection() {
 
       <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-4 pb-8">
         {[
-          { to: "#research", title: "Research", desc: "m6A readers, RNA-protein recognition, biophysical characterization." },
-          { to: "#expertise", title: "Expertise", desc: "ITC, fluorescence, confocal microscopy, cloning and beyond." },
-          { to: "#story", title: "Story", desc: "From West Bengal to IIT Patna to Kent State — a curiosity-led path." },
+          {
+            to: "#research",
+            title: "Research",
+            desc: "m6A readers, RNA-protein recognition, biophysical characterization.",
+          },
+          {
+            to: "#expertise",
+            title: "Expertise",
+            desc: "ITC, fluorescence, confocal microscopy, cloning and beyond.",
+          },
+          {
+            to: "#story",
+            title: "Story",
+            desc: "From West Bengal to IIT Patna to Kent State — a curiosity-led path.",
+          },
         ].map((c, i) => (
           <motion.a
             key={c.to}
@@ -229,7 +261,8 @@ export function HeroSection() {
             <p className="font-display text-2xl">{c.title}</p>
             <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
             <span className="mt-4 inline-flex items-center gap-1 text-sm text-[var(--azure)]">
-              Explore <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              Explore{" "}
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </span>
           </motion.a>
         ))}

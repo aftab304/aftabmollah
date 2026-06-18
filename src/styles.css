@@ -54,17 +54,17 @@
 
   /* Biotech light palette */
   --background: oklch(0.985 0.005 230);
-  --foreground: oklch(0.13 0.035 250);      /* ~#0a0f1e — headings */
-  --ink: oklch(0.10 0.03 250);
+  --foreground: oklch(0.13 0.035 250); /* ~#0a0f1e — headings */
+  --ink: oklch(0.1 0.03 250);
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.18 0.035 250); /* ~#1e293b — card body */
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.13 0.035 250);
 
-  --primary: oklch(0.50 0.18 245);
+  --primary: oklch(0.5 0.18 245);
   --primary-foreground: oklch(0.99 0.005 230);
-  --azure: oklch(0.50 0.18 245);
+  --azure: oklch(0.5 0.18 245);
   --cyan: oklch(0.62 0.14 210);
 
   --secondary: oklch(0.96 0.012 230);
@@ -83,23 +83,15 @@
   --glass: oklch(1 0 0 / 0.55);
   --glass-border: oklch(1 0 0 / 0.7);
 
-  --gradient-hero: radial-gradient(
-      ellipse 80% 60% at 20% 0%,
-      oklch(0.88 0.08 230 / 0.55),
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 70% 55% at 90% 20%,
-      oklch(0.85 0.1 200 / 0.5),
-      transparent 60%
-    ),
+  --gradient-hero:
+    radial-gradient(ellipse 80% 60% at 20% 0%, oklch(0.88 0.08 230 / 0.55), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 90% 20%, oklch(0.85 0.1 200 / 0.5), transparent 60%),
     linear-gradient(180deg, oklch(0.985 0.005 230), oklch(0.96 0.015 220));
 
-  --shadow-glass: 0 1px 0 0 oklch(1 0 0 / 0.6) inset,
-    0 20px 60px -20px oklch(0.55 0.18 245 / 0.25),
+  --shadow-glass:
+    0 1px 0 0 oklch(1 0 0 / 0.6) inset, 0 20px 60px -20px oklch(0.55 0.18 245 / 0.25),
     0 6px 20px -10px oklch(0.5 0.1 245 / 0.2);
-  --shadow-glow: 0 0 0 1px oklch(0.62 0.18 240 / 0.25),
-    0 0 40px -10px oklch(0.62 0.18 240 / 0.5);
+  --shadow-glow: 0 0 0 1px oklch(0.62 0.18 240 / 0.25), 0 0 40px -10px oklch(0.62 0.18 240 / 0.5);
 }
 
 .dark {
@@ -133,23 +125,15 @@
   --glass: oklch(0.22 0.04 245 / 0.55);
   --glass-border: oklch(1 0 0 / 0.1);
 
-  --gradient-hero: radial-gradient(
-      ellipse 80% 60% at 20% 0%,
-      oklch(0.4 0.12 240 / 0.5),
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 70% 55% at 90% 20%,
-      oklch(0.35 0.1 210 / 0.5),
-      transparent 60%
-    ),
+  --gradient-hero:
+    radial-gradient(ellipse 80% 60% at 20% 0%, oklch(0.4 0.12 240 / 0.5), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 90% 20%, oklch(0.35 0.1 210 / 0.5), transparent 60%),
     linear-gradient(180deg, oklch(0.13 0.03 250), oklch(0.1 0.025 250));
 
-  --shadow-glass: 0 1px 0 0 oklch(1 0 0 / 0.05) inset,
-    0 20px 60px -20px oklch(0 0 0 / 0.5),
+  --shadow-glass:
+    0 1px 0 0 oklch(1 0 0 / 0.05) inset, 0 20px 60px -20px oklch(0 0 0 / 0.5),
     0 6px 20px -10px oklch(0 0 0 / 0.4);
-  --shadow-glow: 0 0 0 1px oklch(0.78 0.14 220 / 0.3),
-    0 0 60px -10px oklch(0.78 0.14 220 / 0.45);
+  --shadow-glow: 0 0 0 1px oklch(0.78 0.14 220 / 0.3), 0 0 60px -10px oklch(0.78 0.14 220 / 0.45);
 }
 
 @layer base {
@@ -176,7 +160,10 @@
     color: var(--color-ink);
   }
 
-  h1, h2, h3, .font-display {
+  h1,
+  h2,
+  h3,
+  .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.015em;
   }
@@ -198,12 +185,7 @@
     box-shadow: var(--shadow-glass);
   }
   .text-gradient {
-    background: linear-gradient(
-      120deg,
-      var(--ink) 0%,
-      var(--azure) 55%,
-      var(--cyan) 100%
-    );
+    background: linear-gradient(120deg, var(--ink) 0%, var(--azure) 55%, var(--cyan) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -223,12 +205,18 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     mix-blend-mode: overlay;
   }
-  .hide-scrollbar::-webkit-scrollbar { display: none; }
-  .hide-scrollbar { scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
