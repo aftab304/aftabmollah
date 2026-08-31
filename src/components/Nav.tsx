@@ -31,7 +31,7 @@ export function Nav() {
       <div className="mx-auto max-w-7xl px-4">
         <div className={`glass rounded-2xl flex items-center justify-between px-4 py-2.5 transition-all ${scrolled ? "shadow-glow" : ""}`}>
           <a href="#hero" className="flex items-center gap-2 group">
-            <div className="relative h-7 w-7 rounded-full bg-gradient-to-br from-[var(--azure)] to-[var(--cyan)] shadow-glow">
+            <div className="relative h-9 w-9 shrink-0 aspect-square rounded-full bg-gradient-to-br from-[var(--azure)] to-[var(--cyan)] shadow-glow">
               <div className="absolute inset-1 rounded-full bg-[var(--background)]/40 backdrop-blur" />
             </div>
             <span className="font-display text-lg leading-none">Aftab Mollah</span>

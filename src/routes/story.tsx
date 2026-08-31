@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useVariantOnView } from "@/hooks/useVariantOnView";
 
-const CH1 = "https://lh3.googleusercontent.com/d/1QFDauhhOoF4jfiYapewbb93wHVawU9BZ";
-const CH2 = "https://lh3.googleusercontent.com/d/1NQwir11zKPcvibfF38SDXEO-uAPXCSDE";
-const CH3 = "https://lh3.googleusercontent.com/d/15PD-2yuKwgOtRvdMiqph8X6plSdUvVif";
-const CH4 = "https://lh3.googleusercontent.com/d/1hOhOP3ZShYQP28UhfeExA6odNQzAhMht";
+const CH1 = "https://lh3.googleusercontent.com/d/1pdlVO9TgJsPvlV9ggh42Y1ToCB4Jrc8-";
+const CH2 = "https://lh3.googleusercontent.com/d/1sENuszE_TpSfc4WEY7ANLjdP66e4IqRt";
+const CH3 = "https://lh3.googleusercontent.com/d/1VSBRxGQ3taPlqGzxAlTdsSi8A0lQw-YF";
+const CH4 = "https://lh3.googleusercontent.com/d/1fxjY2q_j3KuOOjqMwIiGdA43FtO0mtgj";
+const CH5 = "https://lh3.googleusercontent.com/d/1tTRNp28KK9ftF4L3oG22IVmY9ErQLWd1";
 const CH6 = "https://lh3.googleusercontent.com/d/1-AJQC0CEmZNl7P-iXd6wSlCbfdu_FGsE";
 
 type Chapter = {
@@ -43,7 +44,7 @@ const chapters: Chapter[] = [
     year: "Across the ocean",
     title: "Moving to the United States.",
     body:
-      "I left for the United States alone, carrying two suitcases and a fully funded PhD position at Kent State University. The first months were equal parts intimidation and exhilaration — a new country, a new lab, and a new way of working.",
+      "I left for the United States alone, carrying two suitcases and a fully funded PhD position at Kent State University. The first months were equal parts intimidation and exhilaration: a new country, a new lab, and a new way of working.",
     quote: "Curiosity is portable. Ambition is not optional.",
     image: CH3,
   },
@@ -52,7 +53,7 @@ const chapters: Chapter[] = [
     year: "Kent State University",
     title: "Falling for RNA and proteins.",
     body:
-      "My doctoral work centers on RNA–protein interactions and m6A reader proteins — the molecules that decide which messages in our cells get read, and how. Biophysics gave me a way to ask thermodynamic questions about biology and actually answer them.",
+      "My doctoral work centers on RNA–protein interactions and m6A reader proteins, the molecules that decide which messages in our cells get read, and how. Biophysics gave me a way to ask thermodynamic questions about biology and actually answer them.",
     quote: "Every binding event is a tiny sentence in the language of life.",
     image: CH4,
   },
@@ -63,15 +64,14 @@ const chapters: Chapter[] = [
     body:
       "Mentoring undergraduates and participating in STEM outreach reshaped what success looks like for me. Some of my proudest moments have been watching mentees win their own awards at the Ohio Academy of Science and the ACS Honors Week.",
     quote: "Science multiplies when it's shared.",
-    image: null,
-    placeholder: "📷 Photo coming soon — mentorship moment or award ceremony",
+    image: CH5,
   },
   {
     tag: "Vision",
     year: "What's next",
     title: "The road from molecules to medicine.",
     body:
-      "I want to keep working at the interface of biophysics and biomedicine — where mechanistic insight into RNA–protein recognition becomes leverage for new diagnostics, modulators, and therapies. Academic or industry, the question is the same: how do we read the molecular language well enough to rewrite it for human good?",
+      "I want to keep working at the interface of biophysics and biomedicine, where mechanistic insight into RNA–protein recognition becomes leverage for new diagnostics, modulators, and therapies. Academic or industry, the question is the same: how do we read the molecular language well enough to rewrite it for human good?",
     quote: "Driven by curiosity, guided by molecular interactions.",
     image: CH6,
   },
@@ -84,7 +84,7 @@ export function StorySection() {
       <SectionHeader
         eyebrow="My Story"
         title={<>A journey through <span className="text-gradient italic">molecules</span>.</>}
-        description="Six chapters — from a curious child in West Bengal to a biophysicist asking thermodynamic questions about life."
+        description="Six chapters, from a curious child in West Bengal to a biophysicist asking thermodynamic questions about life."
       />
 
       <div className="relative mt-20">
