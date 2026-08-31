@@ -8,8 +8,8 @@ import {
 import { useVariantOnView } from "@/hooks/useVariantOnView";
 
 const hero = [
-  { title: "Isothermal Titration Calorimetry", short: "ITC", desc: "Used to measure binding thermodynamics of m6A reader protein interactions — providing ΔH, ΔS, and Kd values to support and validate phage display and pull-down assay data.", anim: ITCAnim },
-  { title: "Fluorescence Spectroscopy", short: "Fluorescence", desc: "Applied during Master's research to image fluorescent carbon nanoparticles inside cancer cells, demonstrating selective drug uptake — and used at Kent State to probe RNA-protein binding interactions.", anim: FluorescenceAnim },
+  { title: "Isothermal Titration Calorimetry", short: "ITC", desc: "Used to measure binding thermodynamics of m6A reader protein interactions, providing ΔH, ΔS, and Kd values to support and validate phage display and pull-down assay data.", anim: ITCAnim },
+  { title: "Fluorescence Spectroscopy", short: "Fluorescence", desc: "Applied during Master's research to image fluorescent carbon nanoparticles inside cancer cells, demonstrating selective drug uptake, and used at Kent State to probe RNA-protein binding interactions.", anim: FluorescenceAnim },
   { title: "Confocal Fluorescence Microscopy", short: "Confocal", desc: "Applied to visualize fluorophore-labeled biomolecules and RNA-protein complexes in fixed and live cell systems.", anim: ConfocalAnim },
   { title: "RNA–Protein Binding Assays", short: "RNA–Protein", desc: "EMSA, fluorescence binding, and competition assays to quantify specificity and selectivity. Applied in the context of m6A reader protein characterization.", anim: BindingAnim },
   { title: "Human Cell Culture", short: "Cell Culture", desc: "Mammalian cell lines for expression, transfection, and live-cell imaging of RNA-protein complexes. Applied in the context of m6A reader protein characterization.", anim: CellCultureAnim },
@@ -26,6 +26,9 @@ const more = [
   { title: "Gel Electrophoresis", desc: "SDS-PAGE and native gels for biochemical characterization." },
   { title: "UV-Visible Spectroscopy", desc: "Absorbance-based quantification and binding studies." },
   { title: "IR Spectroscopy", desc: "Vibrational spectroscopy for secondary structure analysis." },
+  { title: "Circular Dichroism (CD)", desc: "Used to evaluate the secondary structure and folding state of peptides and proteins in solution, providing a rapid, label-free assessment of structural integrity before and after binding experiments." },
+  { title: "CARS Microscopy", desc: "Applied to map the real-time spatial distribution of specific biomolecules, including proteins, lipids, and RNA, in living cells and tissues without fluorescent labels, preserving native cellular context." },
+  { title: "Raman Spectroscopy", desc: "Used to identify, quantify, and map cellular components in real time by generating a unique molecular fingerprint of RNA-protein complexes, enabling label-free, non-destructive characterization at the molecular level." },
 ];
 
 function TechniqueCard({ title, desc, AnimComp, index }: { title: string; desc: string; AnimComp: React.ComponentType; index: number }) {
@@ -54,7 +57,7 @@ export function ExpertiseSection() {
       <SectionHeader
         eyebrow="Methods & Instrumentation"
         title={<>Techniques & <span className="text-gradient italic">expertise</span>.</>}
-        description="An interactive look at the experimental toolkit I bring to RNA-protein biophysics — from thermodynamics to single-cell imaging."
+        description="An interactive look at the experimental toolkit I bring to RNA-protein biophysics, from thermodynamics to single-cell imaging."
       />
 
       <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

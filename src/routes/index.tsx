@@ -19,6 +19,8 @@ const tags = [
   "Biochemist",
   "Molecular Biologist",
   "RNA Researcher",
+  "Epitranscriptomics",
+  "Cell Culture",
 ];
 
 function RGIcon({ className = "" }: { className?: string }) {
@@ -33,8 +35,8 @@ export function HeroSection() {
   const ref = useVariantOnView<HTMLElement>("hero");
   return (
     <section id="hero" ref={ref} className="relative scroll-mt-24">
-      <div className="mx-auto max-w-7xl px-6 pt-12 md:pt-20 pb-24 grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-20 items-center">
-        <div>
+      <div className="mx-auto max-w-7xl px-6 pt-28 md:pt-28 lg:pt-20 pb-24 grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-20 items-center">
+        <div className="order-2 lg:order-none">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -74,7 +76,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.18 }}
             className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            My research sits at the intersection of RNA biology and biophysics — using isothermal titration calorimetry, fluorescence spectroscopy, and EMSA to characterize how proteins recognize chemically modified RNA. The work is mechanistically grounded and directly relevant to RNA dysregulation in cancer and neurological disease.
+            My research sits at the intersection of RNA biology and biophysics, using isothermal titration calorimetry, fluorescence spectroscopy, and EMSA to characterize how proteins recognize chemically modified RNA. The work is mechanistically grounded and directly relevant to RNA dysregulation in cancer and neurological disease.
           </motion.p>
 
           <motion.div
@@ -98,7 +100,7 @@ export function HeroSection() {
           >
             <span className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 dark:bg-teal-500/15 text-teal-800 dark:text-teal-300 px-3 py-1 text-xs font-medium">
               <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400" />
-              Seeking postdoctoral &amp; industry R&amp;D positions · Expected graduation June 2027 · Available from Summer 2027
+              Seeking postdoctoral &amp; industry R&amp;D positions · Expected graduation June 2027
             </span>
           </motion.div>
 
@@ -161,7 +163,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="relative mx-auto w-full max-w-md"
+          className="relative order-1 mx-auto w-full max-w-md lg:order-none"
         >
           <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-[var(--azure)]/40 via-[var(--cyan)]/30 to-transparent blur-2xl" />
           <div className="relative glass rounded-[2rem] p-3 shadow-glass">
@@ -215,7 +217,7 @@ export function HeroSection() {
         {[
           { to: "#research", title: "Research", desc: "m6A readers, RNA-protein recognition, biophysical characterization." },
           { to: "#expertise", title: "Expertise", desc: "ITC, fluorescence, confocal microscopy, cloning and beyond." },
-          { to: "#story", title: "Story", desc: "From West Bengal to IIT Patna to Kent State — a curiosity-led path." },
+          { to: "#story", title: "Story", desc: "From West Bengal to IIT Patna to Kent State, a curiosity-led path." },
         ].map((c, i) => (
           <motion.a
             key={c.to}
